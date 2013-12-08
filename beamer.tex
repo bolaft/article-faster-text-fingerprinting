@@ -33,7 +33,7 @@
 \begin{document}
 
 \begin{frame}
-  \maketitle
+  	\maketitle
 \end{frame}
 
 \begin{frame}
@@ -52,24 +52,69 @@
 	\end{block}
 	
 	\begin{block}{Exemple}
-		Pour la chaîne $s = a_{1} b_{2} c_{3} a_{4} a_{5} d_{6} d_{7} b_{8}$, le \textit{fingerprint} de $\langle 3,7 \rangle$ est $cad$.
+		Pour la chaîne $s = a_{1} b_{2} c_{3} a_{4} a_{5} d_{6} d_{7} b_{8}$, le \textit{fingerprint} de $[3,7]$ est $cad$.
 	\end{block}
 	
 	Cet article s'intéresse au problème algorithmique du calcul de l'ensemble $\mathcal{F}$ dans $s$.	
 \end{frame}
 
-\section{Participation Tree}
+\begin{frame}
+	\frametitle{Paramètres de l'algorithme : locations maximales}
+	
+	\begin{block}{Définition}
+		On note $\mathcal{C}$ un ensemble de lettres de $\Sigma$. Une location maximale de $\mathcal{C}$ dans $s$ est un intervalle $[i,j]$ tel que :
+		
+		\begin{itemize}
+			\item $\mathcal{C}_{s}(i,j) = \mathcal{C}$
+			\item Si $i > 1$, $s_{i-1} \notin$ $\mathcal{C}_{s}(i,j)$
+			\item Si $j < n$, $s_{j+1} \notin$ $\mathcal{C}_{s}(i,j)$
+		\end{itemize}
+		
+		On note $\mathcal{L}$ l'ensemble des locations maximales de tous les \textit{fingerprints} de $\mathcal{F}$.
+	\end{block}
+	
+	\begin{block}{Exemple}
+		Pour la chaîne $s = a_{1} b_{2} c_{3} a_{4} a_{5} d_{6} d_{7} b_{8}$, la seule location maximale de $abc$ est $\langle1,5\rangle$.
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Paramètres de l'algorithme : copies}
+	
+	\begin{block}{Définition}
+		Deux locations maximales $\langle i,j \rangle$ et $\langle k,l \rangle$ de $s$ sont des copies si $s_{i}..s_{j} = s_{k}..s_{l}$.\newline
+		
+		On note $\mathcal{L}_{\mathcal{C}}$ l'ensemble des classes d'équivalence.
+	\end{block}
+	
+	\begin{block}{Exemple}
+		Pour la chaîne $s = a_{1} b_{2} a_{3} d_{4} a_{5} b_{6} a_{7}$, $\langle1,3\rangle$ et $\langle5,7\rangle$ sont des copies.
+	\end{block}
+\end{frame}
 
 \begin{frame}
 	\frametitle{Travaux sur la complexité de l'algorithme}
 	
-	A. Amir, A. Apostolico, G. M. Landau et G. Satta, \textit{Efficient text fingerprinting via parikh mapping}, 2003 : 
-	$\mathcal{O}(n|\Sigma|$ $log$ $n$ $log$ $|\Sigma|)$. \newline
+	\begin{block}{Algorithme initial}
+		A. Amir, A. Apostolico, G. M. Landau et G. Satta. \textit{Efficient text fingerprinting via parikh mapping}, 2003 :\newline
+		
+		$\mathcal{O}(n|\Sigma|$ $log$ $n$ $log$ $|\Sigma|)$
+	\end{block}
 	
-	$\mathcal{O}(n$ $+$ $|\mathcal{L}|$ $log$ $|\Sigma|)$
-	$\mathcal{O}(n$ $+$ $|\mathcal{L}_{\mathcal{C}})$ $log$ $|\Sigma|)$
+	\begin{block}{Algorithme à améliorer}
+		R. Kolpakov and M. Raffinot. \textit{New algorithms for text fingerprinting}, 2006 : \newline
+		
+		$\mathcal{O}(n$ $+$ $|\mathcal{L}|$ $log$ $|\Sigma|)$
+	\end{block}
+	
+	\begin{block}{Algorithme introduit dans \textit{Faster Text Fingerprinting}}
+		$\mathcal{O}(n$ $+$ $|\mathcal{L}_{\mathcal{C}}|)$ $log$ $|\Sigma|)$
+	\end{block}
 
 \end{frame}
+
+
+\section{Participation Tree}
 
 \section{Fingerprint Naming}
 
