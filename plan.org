@@ -10,24 +10,24 @@
    - la fingerprint f est-elle dans s ?
    - retrouver les occurrences de f dans s
    - combien de fingerprints dans s de taille k ?
-** on s'intéresse à calculer F
-*** état de l'art sur le calcul de F
+** TODO on s'intéresse à calculer F
+*** TODO état de l'art sur le calcul de F
     (inliner les defs nécessaires)
     (complexités)
-*** méthode introduite dans l'article (intuition méthodes précendentes vs cet article)
+*** TODO méthode introduite dans l'article (intuition méthodes précendentes vs cet article)
     (par opposition au tableau + liste changements)
     (ne pas recalculer les parties redondantes des fp)
-*** vue d'ensemble de la méthode
+*** TODO vue d'ensemble de la méthode
     - construire PT
     - nommer PT
     - …
     - profit
-* Participation Tree
-** participation tree
+* TODO Participation Tree
+** TODO participation tree
    (Adaptation du ST à la participation dans les fingerprints)
-** Démo du PT
+** TODO Démo du PT
    (donner étapes construction à l'écran)
-** le PT contient bien toutes les pos max (théorème 1)
+** TODO le PT contient bien toutes les pos max (théorème 1)
    (bien doser preuve et intuition, appuyer lemme 2 et corollaire)
 ** Transformer le ST en PT
 * Nommage
