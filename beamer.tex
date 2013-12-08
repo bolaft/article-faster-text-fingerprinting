@@ -24,6 +24,14 @@
 \graphicspath{{./img/}}
 \DeclareGraphicsExtensions{.png, .jpeg, .jpg}
 
+\AtBeginSection[]{%
+  \begin{frame}<beamer>
+    \frametitle{Plan}
+    \tableofcontents[sectionstyle=show/hide,subsectionstyle=hide/show/hide]
+  \end{frame}
+  \addtocounter{framenumber}{-1}
+}
+
 \lstset{basicstyle=\footnotesize}
 
 \title{Faster Text Fingerprinting}
@@ -34,10 +42,6 @@
 
 \begin{frame}
   	\maketitle
-\end{frame}
-
-\begin{frame}
-	\tableofcontents
 \end{frame}
 
 \section{Introduction}
@@ -127,6 +131,27 @@
 
 \section{Participation Tree}
 
+
+\begin{frame}
+	\frametitle{Travaux sur la complexité de l'algorithme}
+	
+	\begin{block}{Algorithme initial}
+		A. Amir, A. Apostolico, G. M. Landau et G. Satta. \textit{Efficient text fingerprinting via parikh mapping}, 2003 :\newline
+		
+		$\mathcal{O}(n|\Sigma|$ $log$ $n$ $log$ $|\Sigma|)$
+	\end{block}
+	
+	\begin{block}{Algorithme à améliorer}
+		R. Kolpakov and M. Raffinot. \textit{New algorithms for text fingerprinting}, 2006 : \newline
+		
+		$\mathcal{O}(n$ $+$ $|\mathcal{L}|$ $log$ $|\Sigma|)$
+	\end{block}
+	
+	\begin{block}{Algorithme introduit dans \textit{Faster Text Fingerprinting}}
+		$\mathcal{O}(n$ $+$ $|\mathcal{L}_{\mathcal{C}}|)$ $log$ $|\Sigma|)$
+	\end{block}
+
+\end{frame}
 \section{Fingerprint Naming}
 
 \section{Conclusion}
