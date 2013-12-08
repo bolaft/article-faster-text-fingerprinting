@@ -1,0 +1,6 @@
+/slides/log/*.log
+/slides/tmp/**
+/slides/node_modules/
+/slides/.sass-cache
+/auto/*
+*~

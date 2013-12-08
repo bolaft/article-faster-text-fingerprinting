@@ -1,0 +1,39 @@
+* Introduction
+  (warning termes anglais)
+** présentation de ce qu'est une fingerprint
+** présentation applications
+*** de manière générale (bosser sur les sets au lieu des lists)
+*** en bio-info (il parait que ça existe + skip)
+*** en atal (this is a rule)
+** présentation formelle des problèmes
+   - calculer F
+   - la fingerprint f est-elle dans s ?
+   - retrouver les occurrences de f dans s
+   - combien de fingerprints dans s de taille k ?
+** on s'intéresse à calculer F
+*** état de l'art sur le calcul de F
+    (inliner les defs nécessaires)
+    (complexités)
+*** méthode introduite dans l'article (intuition méthodes précendentes vs cet article)
+    (par opposition au tableau + liste changements)
+    (ne pas recalculer les parties redondantes des fp)
+*** vue d'ensemble de la méthode
+    - construire PT
+    - nommer PT
+    - …
+    - profit
+* Participation Tree
+** participation tree
+   (Adaptation du ST à la participation dans les fingerprints)
+** Démo du PT
+   (donner étapes construction à l'écran)
+** le PT contient bien toutes les pos max (théorème 1)
+   (bien doser preuve et intuition, appuyer lemme 2 et corollaire)
+** Transformer le ST en PT
+* Nommage
+** Nommage d'une fingerprint
+** Nommage basique (2003)
+** Nommage par changements
+** Nommage sur l'arbre
+* Conclusion
+* Questions
