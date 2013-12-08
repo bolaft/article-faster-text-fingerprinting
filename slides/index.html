@@ -42,15 +42,56 @@
           </section>
 
           <section>
-            <h3>Qu'est ce qu'un fingerprint ?</h3>
+            <h3>Qu'est ce qu'une fingerprint ?</h3>
+	    <p>Pour $s = s_1 .. s_n \in \Sigma^*$, la fingerprint $f$
+              sur $[i,j]$ est $\{c | c \in s_i .. s_j\}$.</p>
+	    <p>Par exemple, la <span class="eng">fingerprint</span>
+	      sur l'intervalle $[6,10]$ de la chaîne
+	      $« M_1A_2S_3T_4E_5R_6␣_7A_8T_9A_{10}L_{11} »$ est
+	      $\{␣,A,R,T\}$</p>
+	    <p>Le fingerprinting de $s$ consiste à calculer les
+	      fingerprints de toutes les sous-chaînes de $s$.</p>
           </section>
 
           <section>
-            <h3>Applications possibles</h3>
+            <h3>Applications possibles (1/2)</h3>
+            <h4>De manière générale</h4>
+	    <p>Les fingerprints sont utiles
+	      quand l'on souhaite travailler sur des <b>ensembles</b> de
+	      caractéristiques plutôt que des <b>séquences</b> de
+	      caractéristiques.</p>
+	    <h4>Intuition TAListe</h4>
+	    <p>Les fingerprint sont aux ensembles ce que les n-grams
+	    sont aux séquences.</p>
           </section>
 
           <section>
-            <h3>Présentation formelle des problèmes</h3>
+            <h3>Applications possibles (2/2)</h3>
+            <h4>En bio-informatique</h4>
+	    <p>Recherche approchée de chaîne de caractères.</p>
+            <h4>En traitement des langues</h4>
+	    <p>Intéressant pour apprendre une distribution
+	      ensembliste pour un classificateur.</p>
+          </section>
+
+          <section>
+            <h3>Problèmes associés aux fingerprints</h3>
+	    <ol>
+	      <li>Calculer l'ensemble $\mathcal{F}$ des
+		fingerprints</li>
+	      <li>Décider si une fingerprint $\mathcal{f}$ est dans
+	      $\mathcal{F}$</li>
+	      <li>Retrouver les occurrences de $f$ dans $s$</li>
+	      <li>Calculer le nombre de fingerprints de taille $k$
+	      dans $s$</li>
+	      <li>…</li>
+	    </ol>
+          </section>
+
+          <section>
+            <h3>Portée de l'article</h3>
+	    <p>Cet article s'intéresse au problème 1 : calculer
+	      l'ensemble des fingerprints.</p>
           </section>
 
           <section>
