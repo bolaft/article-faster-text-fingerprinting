@@ -22,8 +22,6 @@
 
 \maketitle
 
-\tableofcontents
-
 \section{Introduction}
 
 \subsection{Qu'est ce qu'un \emph{fingerprint} ?}
@@ -36,7 +34,7 @@ Le \emph{fingerprinting} d'un texte $s$ c'est le calcul de tous les $f$ de $\mat
 
 \subsection{Applications possibles}
 
-Les fingerprints sont utiles quand l'on souhaite travailler sur des ensembles de caractéristiques plutôt que des séquences de caractéristiques. On peut dire que les \emph{fingerprints} sont aux ensembles ce que les n-grams sont aux séquences. En bioinformatique, les \emph{fingerprints} sont utilisés pour la recherche approchée de chaîne de caractères. En traitement des langues, ils sont utilisés pour l'apprentissage de distributions ensemblistes. Par exemple, pour un classificateur entraîné pour désambiguiser les mots, on pourrait apprendre la distribution des \emph{fingerprints} dans des patrons donnés : \newline
+Les fingerprints sont utiles quand l'on souhaite travailler sur des ensembles de caractéristiques plutôt que des séquences de caractéristiques. On peut dire que les \emph{fingerprints} sont aux ensembles ce que les n-grams sont aux séquences. En bioinformatique, les \emph{fingerprints} sont utilisés pour la recherche approchée de chaîne de caractères. En traitement des langues, ils sont utilisés pour l'apprentissage de distributions ensemblistes \cite{amir}. Par exemple, pour un classificateur entraîné pour désambiguiser les mots, on pourrait apprendre la distribution des \emph{fingerprints} dans des patrons donnés : \newline
 
 \emph{It might be a \{Adj, Adv\} match.}
 
@@ -167,15 +165,32 @@ Exemple de construction de l'arbre pour la chaîne $ataltatlt\#$ :
 
 \subsection{Théorème}
 
+$\Phi$ étant définie comme une fonction retournant l'ensemble des localisations maximales correspondant à un chemin $z$ de $PT$, \newline
+
+\textbf{toutes les localisations maximales sont dans l'image $\Phi(z)$ d'un chemin $z$ dans $PT(s = s_{1}..s_{n})$, et la taille de $PT(s)$ est $\mathcal{O}(|\mathcal{L}_{\mathcal{C}}|)$}.
+
 \subsection{Du \emph{Suffix} Tree au \emph{Participation Tree}}
 
-\subsubsection{Idées}
+Les principes de l'algorithme sont les suivants : calculer les participations des branches aux fingerprints les unes après les autres, marquer les arêtes calculées pour ne pas les recalculer, et calculer seulement les deltas des valeurs nécessaires à chaque pas.
 
-\subsubsection{Algorithme}
+\subsubsection{Algorithme efficace}
 
-\subsubsection{Calcul de la participation de l'arète}
+\textbf{Pour chaque branche}
+
+$\rightarrow$ Calculer la chaîne indicée $poc_i$ des premières occurrences de chaque caractère de la chaîne sur la branche
+
+$\rightarrow$ Calculer la position $p_i$ de l'occurrence suivante du premier caractère de la branche
+
+\textbf{Pour chaque arête $[x,y]$ sur la branche, de la feuille à la racine}
+
+$\rightarrow$ Retourner la sous chaîne de $poc_i$ allant de l'indice $l$ à l'indice $r$ avec $argmin_l(l \leq x)$ et $argmax_r(r < p \land r \leq y)$. Peut valoir $\varepsilon$.
 
 \subsubsection{Astuces algorithmiques}
+
+Représentation des "chaque première occurrence" dans un arbre AVL
+Stockage des positions des caractères dans des listes pour pouvoir calculer l'itération suivante depuis l'itération courante en $\mathcal{O}(log |\Sigma|)$. \newline
+
+$\rightarrow$ $\mathcal{O}(n \times log |\Sigma| + |\mathcal{L}_\mathcal{c}|)$ en temps.
 
 \section{Nommage des \emph{fingerprints}}
 
@@ -192,9 +207,14 @@ rendre la gestion des fingerprints plus aisée \cite{amir, karp}. Par gestio nou
 
 \section{Conclusion}
 
-\subsection{Solutions aux problèmes soulevés en introduction}
+L'article propose une méthode de calcul de $\mathcal{F}$ basée sur l'arbre des suffixes. Il adapte une fonction de nommage existante, originellement appliquée à une liste, à une structure arborescente : l'arbre des participations. La méthode proposée est état de l'art pour la complexité dans le pire des cas d'une construction exacte. \newline
 
-\subsection{Calcul de $\mathcal{F}$}
+En conservant le mapping des noms et les noms des fingerprints obtenues, il est facile de répondre aux questions posées dans l'introduction :\newline
+
+\begin{itemize}
+	\item Trouver le nombre de fingerprints \newline $\rightarrow$ Autant de fingerprints qu'il y a de noms.
+	\item Déterminer si un fingerprint est dans F \newline $\rightarrow$ Nommer le fingerprint et regarder si le nom est dans l'ensemble des noms calculé. \newline
+\end{itemize} 
 
 \bibliography{biblio.bib}
 \bibliographystyle{amsalpha}
