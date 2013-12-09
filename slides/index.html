@@ -173,46 +173,33 @@
 <section>
   <h3>Pour le calcul de la complexité...</h3>
   <br>
-  <div class="fragment">|$\mathcal{F}| \neq |\mathcal{L}_{\mathcal{C}}| \neq |\mathcal{L}|$</div>
-  <br>
-  <div class="fragment">|$\mathcal{F}| \leq |\mathcal{L}_{\mathcal{C}}| \leq |\mathcal{L}|$</div>
+  <div>|$\mathcal{F}| \leq |\mathcal{L}_{\mathcal{C}}| \leq |\mathcal{L}|$</div>
 </section>
 
 <section>
-  <h3>Calculer $\mathcal{F}$ : état de l'art</h3>
-
+  <h3>Calculer $\mathcal{F}$ : travaux</h3>
 
   <br>
 
-  <small>
-    <table class="table table-bordered table-centered">
-      <tr>
-        <td><strong>Solution</strong></td>
-        <td><strong>Espace (bits)</strong></td>
-        <td><strong>Temps</strong></td>
-      </tr>
-      <tr>
-        <td>Various Impr. to T. F. (Monte-Carlo)</td>
-        <td>$\mathcal{O}((n + |\mathcal{F}|)$ $log$ $n)$</td>
-        <td>$\mathcal{O}(n + |\mathcal{L}|)$</td>
-      </tr>
-      <tr>
-        <td>Faster T. F.</td>
-        <td>$\mathcal{O}((n + |\mathcal{L}_{\mathcal{C}}| + |\mathcal{F}|$ $log$ $|\Sigma|)$ $log$ $n)$</td>
-        <td>$\mathcal{O}(n + |\mathcal{L}_{\mathcal{C}}|$ $log$ $|\Sigma|)$</td>
-      </tr>
-      <tr>
-        <td>New Algorithms for T. F.</td>
-        <td>$\mathcal{O}((n + |\mathcal{L}|)$ $log$ $n)$</td>
-        <td>$\mathcal{O}(n + |\mathcal{L}|$ $log$ $|\Sigma|)$</td>
-      </tr>
-      <tr>
-        <td>Efficient T. F. via Parikh Mapping</td>
-        <td></td>
-        <td>$\mathcal{O}(n|\Sigma|$ $log$ $n$ $log$ $|\Sigma|)$</td>
-      </tr>
-    </table>
-  </small>
+  <ul>
+    <li class="fragment">Efficient Text Fingerprinting via Parikh Mapping (2003)
+      <ul>
+        <li class="fragment">$\mathcal{O}(n|\Sigma|$ $log$ $n$ $log$ $|\Sigma|)$</li>
+      </ul></li><br>
+    <li class="fragment">New Algorithms for Text Fingerprinting (2006)
+      <ul>
+        <li class="fragment">$\mathcal{O}(n + |\mathcal{L}|$ $log$ $|\Sigma|)$</li>
+      </ul></li><br>
+    <li class="fragment">Faster Text Fingerprinting (2008)
+      <ul>
+        <li class="fragment">$\mathcal{O}(n + |\mathcal{L}_{\mathcal{C}}|$ $log$ $|\Sigma|)$</li>
+      </ul></li><br>
+    <li class="fragment">Various Improvements to Text Fingerprinting (2013)
+      <ul>
+        <li class="fragment">Approximatif (Monte-Carlo)</li>
+        <li class="fragment">$\mathcal{O}(n + |\mathcal{L}|)$</li>
+      </ul></li><br>
+  </ul>
 </section>
 
 <section>
@@ -220,7 +207,7 @@
     nouvelle méthode</h3>
   <h4>Approches antérieures</h4>
   <p>Organisation des fingerprints dans une liste, redondance dans les
-    calculs.</p>
+    calculs.</p><br>
   <h4>Approche de l'article</h4>
   <p>Organisation des fingerprints dans un arbre, pas de redondance
     dans les calculs.</p>
@@ -286,7 +273,7 @@
   <section>
     <h3>Construction de l'arbre (5/5)</h3>
 
-    On déploit l'arbre et on supprime les branches vides
+    On déploie l'arbre et on supprime les branches vides
 
     <img src="img/construction-45.svg">
   </section>
@@ -302,13 +289,15 @@
   <section>
     <h3>Du suffix tree au participation tree (1/4)</h3>
     <h4>Idées</h4>
-    <ul>
-      <li>Calculer les participations des branches aux
-        fingerprints les unes après les autres</li>
-      <li>Marquer les arêtes calculées pour ne pas les recalculer</li>
-      <li>Calculer seulement les deltas des valeurs
-        nécessaires à chaque pas</li>
-    </ul>
+    <small>
+      <ul>
+        <li>Calculer les participations des branches aux
+          fingerprints les unes après les autres</li>
+        <li>Marquer les arêtes calculées pour ne pas les recalculer</li>
+        <li>Calculer seulement les deltas des valeurs
+          nécessaires à chaque pas</li>
+      </ul>
+    </small>
     <img src="img/suffix-tree.svg"> <span style="position:
                                                  relative; top: -150px;">→</span> <img src="img/participation-tree.svg">
   </section>
