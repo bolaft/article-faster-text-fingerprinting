@@ -251,7 +251,7 @@
           </section>
 
           <section>
-            <h3>Du suffix tree au participation tree (1/2)</h3>
+            <h3>Du suffix tree au participation tree (1/4)</h3>
 	    <h4>Idées</h4>
 	    <ul>
 	      <li>Calculer les participations des branches aux
@@ -265,7 +265,7 @@
           </section>
 
           <section>
-            <h3>Du suffix tree au participation tree (2/2)</h3>
+            <h3>Du suffix tree au participation tree (2/4)</h3>
 	    <h4>Algorithme</h4>
 	    <pre><code data-trim>
 		Construire_PT(ST)
@@ -282,6 +282,34 @@
   11.     Fin du tant que
   12. Fin du pour
 	    </code></pre>
+          </section>
+          <section>
+            <h3>Du suffix tree au participation tree (3/4)</h3>
+	    <h4>Calcul de la participation de l'arête</h4>
+	    Pour la branche :
+	    <br>
+	    <img src="img/suffix-tree-participation.svg">
+	    <br>
+	    On calcule
+	    <br>
+	    <img src="img/participation.svg">
+	    <br>
+	    La participation d'une arête est alors l'intersection
+	    entre sa chaîne et $s_i .. s_{p-1}$. Peut valoir
+	    $\varepsilon$.
+          </section>
+          <section>
+            <h3>Du suffix tree au participation tree (4/4)</h3>
+	    <h4>Astuces algorithmiques</h4>
+	    <ul>
+	      <li>Représentation des « chaque première occurrence »
+	      dans un arbre AVL</li>
+	      <li>Stockage des positions des caractères dans des
+	      listes pour pouvoir calculer l'itération suivante
+	      depuis l'itération courante en $\mathcal{O}(log |Σ|)$</li>
+	    </ul><br><br><br><br>
+	    <p>→ $\mathcal{O}(n×log |Σ| + |\mathcal{L}_\mathcal{c}|)$
+	    en temps</p>
           </section>
         </section>
 
