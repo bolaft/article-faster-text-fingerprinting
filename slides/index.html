@@ -94,6 +94,73 @@
           </section>
 
           <section>
+            <h3>Avant de commencer</h3>
+
+            <br>
+
+            Deux notions à connaître pour comprendre l'apport de l'article sur le problème du calcul de $\mathcal{F}$ :<br>
+            <br>
+
+            <ul>
+              <li>Les locations maximales</li>
+              <li>Les copies et les classes d'équivalence</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Locations maximales</h3>
+
+            <ul>
+              <li>On note $\mathcal{C}$ un ensemble de lettres de $\Sigma$. Une location maximale de $\mathcal{C}$ dans $s$ est un intervalle $[i,j]$ tel que :<br>
+                <br>
+                <ul>
+                  <li>$\mathcal{C}_{s}(i,j) = \mathcal{C}$</li>
+                  <li>Si $i > 1$, $s_{i-1} \notin$ $\mathcal{C}_{s}(i,j)$</li>
+                  <li>Si $j < n$, $s_{j+1} \notin$ $\mathcal{C}_{s}(i,j)$</li>
+                </ul><br>
+              </li>
+              <li>On note $\mathcal{L}$ l'ensemble des locations maximales de tous les fingerprints de $\mathcal{F}$</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Exemple</h3>
+            <br>
+            $s = a_{1} b_{2} c_{3} a_{4} a_{5} d_{6} d_{7} b_{8}$<br>
+            <br>
+            $\mathcal{C} = abc$<br>
+            <br>
+            Locations maximales : {$\langle1,5\rangle$}
+          </section>
+
+          <section>
+            <h3>Copies et classes d'équivalence</h3>
+
+            <br>
+
+            <ul>
+              <li>Deux locations maximales $\langle i,j \rangle$ et $\langle k,l \rangle$ de $s$ sont des copies si $s_{i}..s_{j} = s_{k}..s_{l}$</li>
+              <li>On note $\mathcal{L}_{\mathcal{C}}$ l'ensemble des classes d'équivalence</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Exemple</h3>
+            <br>
+            $s = a_{1} b_{2} a_{3} d_{4} a_{5} b_{6} a_{7}$<br>
+            <br>
+            $\langle1,3\rangle$ et $\langle5,7\rangle$ sont des copies
+          </section>
+
+          <section>
+            <h3>Pour le calcul de la complexité...</h3>
+            <br>
+            <div class="fragment">|$\mathcal{F}| \neq |\mathcal{L}| \neq |\mathcal{L}_{\mathcal{C}}|$</div>
+            <br>
+            <div class="fragment">|$\mathcal{F}| \leq |\mathcal{L}| \leq |\mathcal{L}_{\mathcal{C}}|$</div>
+          </section>
+
+          <section>
             <h3>Calculer $\mathcal{F}$ : état de l'art</h3>
 
             <style type="text/css">
@@ -137,71 +204,22 @@
           </section>
 
           <section>
-            <h3>Locations maximales</h3>
+            <h3>Passage de $|\mathcal{L}|$ à $|\mathcal{L}_{\mathcal{C}}|$ : nouvelle méthode</h3>
 
-            <ul>
-              <li>On note $\mathcal{C}$ un ensemble de lettres de $\Sigma$. Une location maximale de $\mathcal{C}$ dans $s$ est un intervalle $[i,j]$ tel que :<br>
-                <br>
-                <ul>
-                  <li>$\mathcal{C}_{s}(i,j) = \mathcal{C}$</li>
-                  <li>Si $i > 1$, $s_{i-1} \notin$ $\mathcal{C}_{s}(i,j)$</li>
-                  <li>Si $j < n$, $s_{j+1} \notin$ $\mathcal{C}_{s}(i,j)$</li>
-                </ul><br>
-              </li>
-              <li>On note $\mathcal{L}$ l'ensemble des locations maximales de tous les fingerprints de $\mathcal{F}$</li>
-            </ul>
+            <!--
+              TODO méthode introduite dans l'article (intuition méthodes précendentes vs cet article)
+              (par opposition au tableau + liste changements)
+              (ne pas recalculer les parties redondantes des fp) 
+            -->
           </section>
 
-          <section>
-            <h3>Exemple</h3>
-            <br>
-            $s = a_{1} b_{2} c_{3} a_{4} a_{5} d_{6} d_{7} b_{8}$<br>
-            <br>
-            $\mathcal{C} = abc$<br>
-            <br>
-            Locations maximales : {$\langle1,5\rangle$}
-          </section>
-
-          <section>
-            <h3>Copies</h3>
-
-            <br>
-
-            <ul>
-              <li>Deux locations maximales $\langle i,j \rangle$ et $\langle k,l \rangle$ de $s$ sont des copies si $s_{i}..s_{j} = s_{k}..s_{l}$</li>
-              <li>On note $\mathcal{L}_{\mathcal{C}}$ l'ensemble des classes d'équivalence</li>
-            </ul>
-          </section>
-
-          <section>
-            <h3>Exemple</h3>
-            <br>
-            $s = a_{1} b_{2} a_{3} d_{4} a_{5} b_{6} a_{7}$<br>
-            <br>
-            $\langle1,3\rangle$ et $\langle5,7\rangle$ sont des copies
-          </section>
-
-
-<!--
-
-*** TODO état de l'art sur le calcul de F
-    (inliner les defs nécessaires)
-    (complexités)
-*** TODO méthode introduite dans l'article (intuition méthodes précendentes vs cet article)
-    (par opposition au tableau + liste changements)
-    (ne pas recalculer les parties redondantes des fp)
-*** TODO vue d'ensemble de la méthode
-    - construire PT
-    - nommer PT
-    - …
-    - profit -->
           <section>
             <h3>Vue d'ensemble de la méthode</h3>
 
           	<ul>
-			  <li>Construire l'arbre des suffixes de $s$</li>
-			  <li>À partir de l'arbre des suffixes, construire un arbre des participations</li>
-			  <li>À partir de l'arbre des participations, nommer et retourner tous les fingerprints de $s$</li>
+      			  <li>Construire l'arbre des suffixes de $s$</li>
+      			  <li>À partir de l'arbre des suffixes, construire un arbre des participations</li>
+      			  <li>À partir de l'arbre des participations, nommer et retourner tous les fingerprints de $s$</li>
           	</ul>
           </section>
         </section>
@@ -229,7 +247,7 @@
 
             $\Phi$ étant définie comme une fonction retournant l'ensemble des locations maximales correspondant à un chemin $z$ de $PT$,<br>
             <br>
-            <strong>toutes les locations maximales sont dans l'image $\Phi(z)$ d'un chemin $z$ dans $PT(s = s_{1}..s_{n})$, et la taille de $PT(s)$ est $\mathcal{O}(|\mathcal{L}_{\mathcal{C}}|)$</strong>
+            <b>toutes les locations maximales sont dans l'image $\Phi(z)$ d'un chemin $z$ dans $PT(s = s_{1}..s_{n})$, et la taille de $PT(s)$ est $\mathcal{O}(|\mathcal{L}_{\mathcal{C}}|)$</b>
           </section>
           
           <section>
