@@ -1,6 +1,8 @@
 \documentclass[a4paper]{article}
 
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{libertine}
 \usepackage[french]{babel}
 \usepackage{amsmath}
 \usepackage{xcolor}
@@ -8,6 +10,7 @@
 \usepackage{listings}
 \usepackage{caption}
 \usepackage{wrapfig}
+\usepackage{float}
 
 \DeclareGraphicsExtensions{.png, .jpeg, .jpg, .svg}
 
@@ -95,7 +98,7 @@ $\rightarrow \mathcal{O}(n + |\mathcal{L}|)$ (Approximatif - \emph{Monte-Carlo})
 
 \subsection{Apports de l'article}
 
-Dans les approches antérieurs, les \emph{fingerprints} dans une liste, ce qui entraînait des redondances dans les calculs. Ici, les \emph{fingerprints} sont organisés dasn un arbre, et on ne retrouve pas cette redondance.
+Dans les approches antérieures, les \emph{fingerprints} dans une liste, ce qui entraînait des redondances dans les calculs. Ici, les \emph{fingerprints} sont organisés dans un arbre, et on ne retrouve pas cette redondance.
 
 \subsection{Vue d'ensemble}
 	
@@ -119,7 +122,7 @@ Exemple de construction de l'arbre pour la chaîne $ataltatlt\#$ :
 
 \subsubsection{Étape 1}
 
-\begin{figure}[ht!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=80mm]{./slides/img/construction-0.png}
 \caption{État initial : l'arbre des suffixes}
@@ -128,7 +131,7 @@ Exemple de construction de l'arbre pour la chaîne $ataltatlt\#$ :
 
 \subsubsection{Étape 2}
 
-\begin{figure}[ht!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=80mm]{./slides/img/construction-1.png}
 \caption{On réduit tous les caractères à partir de la seconde occurrence du premier caractère du chemin à $\varepsilon$}
@@ -137,7 +140,7 @@ Exemple de construction de l'arbre pour la chaîne $ataltatlt\#$ :
 
 \subsubsection{Étape 3}
 
-\begin{figure}[ht!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=80mm]{./slides/img/construction-2.png}
 \caption{De la racine au dernier caractère avant $\varepsilon$, on ne garde que la première occurrence de chaque caractère.}
@@ -146,7 +149,7 @@ Exemple de construction de l'arbre pour la chaîne $ataltatlt\#$ :
 
 \subsubsection{Étape 4}
 
-\begin{figure}[ht!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=80mm]{./slides/img/construction-3.png}
 \caption{On remplace le dernier caractère de chaque chemin de la racine à une feuille par $\varepsilon$}
@@ -155,7 +158,7 @@ Exemple de construction de l'arbre pour la chaîne $ataltatlt\#$ :
 
 \subsubsection{Étape 5}
 
-\begin{figure}[ht!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=80mm]{./slides/img/construction-45.png}
 \caption{On déploie l'arbre et on supprime les branches vides}
