@@ -63,7 +63,7 @@
 	      caractéristiques.</p>
 	    <h4>Intuition TAListe</h4>
 	    <p>Les fingerprints sont aux ensembles ce que les n-grams
-	    sont aux séquences.</p>
+	      sont aux séquences.</p>
           </section>
 
           <section>
@@ -81,10 +81,10 @@
 	      <li>Calculer l'ensemble $\mathcal{F}$ des
 		fingerprints</li>
 	      <li>Décider si une fingerprint $\mathcal{f}$ est dans
-	      $\mathcal{F}$</li>
+		$\mathcal{F}$</li>
 	      <li>Retrouver les occurrences de $f$ dans $s$</li>
 	      <li>Calculer le nombre de fingerprints de taille $k$
-	      dans $s$</li>
+		dans $s$</li>
 	      <li>…</li>
 	    </ol>
           </section>
@@ -118,717 +118,717 @@
                 <ul>
                   <li>$\mathcal{C}_{s}(i,j) = \mathcal{C}$</li>
                   <li>Si $i > 1$, $s_{i-1} \notin$ $\mathcal{C}_{s}(i,j)$</li>
-                  <li>Si $j < n$, $s_{j+1} \notin$ $\mathcal{C}_{s}(i,j)$</li>
-                </ul><br>
-              </li>
-              <li>On note $\mathcal{L}$ l'ensemble des localisations maximales de tous les fingerprints de $\mathcal{F}$</li>
-            </ul>
-          </section>
+<li>Si $j < n$, $s_{j+1} \notin$ $\mathcal{C}_{s}(i,j)$</li>
+            </ul><br>
+</li>
+<li>On note $\mathcal{L}$ l'ensemble des localisations maximales de tous les fingerprints de $\mathcal{F}$</li>
+</ul>
+</section>
 
-          <section>
-            <h3>Exemple</h3>
-            <br>
-            $s = a_{1} b_{2} c_{3} a_{4} a_{5} d_{6} d_{7} b_{8}$<br>
-            <br>
-            $\mathcal{C} = abc$<br>
-            <br>
-            Localisations maximales : {$\langle1,5\rangle$}
-          </section>
+<section>
+  <h3>Exemple</h3>
+  <br>
+  $s = a_{1} b_{2} c_{3} a_{4} a_{5} d_{6} d_{7} b_{8}$<br>
+  <br>
+  $\mathcal{C} = abc$<br>
+  <br>
+  Localisations maximales : {$\langle1,5\rangle$}
+</section>
 
-          <section>
-            <h3>Copies et classes d'équivalence</h3>
+<section>
+  <h3>Copies et classes d'équivalence</h3>
 
-            <br>
+  <br>
 
-            <ul>
-              <li>Deux localisations maximales $\langle i,j \rangle$ et $\langle k,l \rangle$ de $s$ sont des copies si $s_{i}..s_{j} = s_{k}..s_{l}$</li>
-              <li>On note $\mathcal{L}_{\mathcal{C}}$ l'ensemble des classes d'équivalence</li>
-            </ul>
-          </section>
+  <ul>
+    <li>Deux localisations maximales $\langle i,j \rangle$ et $\langle k,l \rangle$ de $s$ sont des copies si $s_{i}..s_{j} = s_{k}..s_{l}$</li>
+    <li>On note $\mathcal{L}_{\mathcal{C}}$ l'ensemble des classes d'équivalence</li>
+  </ul>
+</section>
 
-          <section>
-            <h3>Exemple</h3>
-            <br>
-            $s = a_{1} b_{2} a_{3} d_{4} a_{5} b_{6} a_{7}$<br>
-            <br>
-            $\langle1,3\rangle$ et $\langle5,7\rangle$ sont des copies
-          </section>
+<section>
+  <h3>Exemple</h3>
+  <br>
+  $s = a_{1} b_{2} a_{3} d_{4} a_{5} b_{6} a_{7}$<br>
+  <br>
+  $\langle1,3\rangle$ et $\langle5,7\rangle$ sont des copies
+</section>
 
-          <section>
-            <h3>Pour le calcul de la complexité...</h3>
-            <br>
-            <div class="fragment">|$\mathcal{F}| \neq |\mathcal{L}_{\mathcal{C}}| \neq |\mathcal{L}|$</div>
-            <br>
-            <div class="fragment">|$\mathcal{F}| \leq |\mathcal{L}_{\mathcal{C}}| \leq |\mathcal{L}|$</div>
-          </section>
+<section>
+  <h3>Pour le calcul de la complexité...</h3>
+  <br>
+  <div class="fragment">|$\mathcal{F}| \neq |\mathcal{L}_{\mathcal{C}}| \neq |\mathcal{L}|$</div>
+  <br>
+  <div class="fragment">|$\mathcal{F}| \leq |\mathcal{L}_{\mathcal{C}}| \leq |\mathcal{L}|$</div>
+</section>
 
-          <section>
-            <h3>Calculer $\mathcal{F}$ : état de l'art</h3>
+<section>
+  <h3>Calculer $\mathcal{F}$ : état de l'art</h3>
 
-            <style type="text/css">
-              .table td {
-                border-top: 1px solid black;
-                padding: 10px;
-              }
-            </style>
+  <style type="text/css">
+    .table td {
+    border-top: 1px solid black;
+    padding: 10px;
+    }
+  </style>
 
-            <br>
+  <br>
 
-            <small>
-              <table class="table">
-                <thead>
-                  <th>Solution</th>
-                  <th>Espace (bits)</th>
-                  <th>Temps</th>
-                </thead>
-                <tr>
-                  <td>Various Impr. to T. F. (Monte-Carlo)</td>
-                  <td>$\mathcal{O}((n + |\mathcal{F}|)$ $log$ $n)$</td>
-                  <td>$\mathcal{O}(n + |\mathcal{L}|)$</td>
-                </tr>
-                <tr>
-                  <td>Faster T. F.</td>
-                  <td>$\mathcal{O}((n + |\mathcal{L}_{\mathcal{C}}| + |\mathcal{F}|$ $log$ $|\Sigma|)$ $log$ $n)$</td>
-                  <td>$\mathcal{O}(n + |\mathcal{L}_{\mathcal{C}}|$ $log$ $|\Sigma|)$</td>
-                </tr>
-                <tr>
-                  <td>New Algorithms for T. F.</td>
-                  <td>$\mathcal{O}((n + |\mathcal{L}|)$ $log$ $n)$</td>
-                  <td>$\mathcal{O}(n + |\mathcal{L}|$ $log$ $|\Sigma|)$</td>
-                </tr>
-                <tr>
-                  <td>Efficient T. F. via Parikh Mapping</td>
-                  <td></td>
-                  <td>$\mathcal{O}(n|\Sigma|$ $log$ $n$ $log$ $|\Sigma|)$</td>
-                </tr>
-              </table>
-            </small>
-          </section>
+  <small>
+    <table class="table">
+      <thead>
+        <th>Solution</th>
+        <th>Espace (bits)</th>
+        <th>Temps</th>
+      </thead>
+      <tr>
+        <td>Various Impr. to T. F. (Monte-Carlo)</td>
+        <td>$\mathcal{O}((n + |\mathcal{F}|)$ $log$ $n)$</td>
+        <td>$\mathcal{O}(n + |\mathcal{L}|)$</td>
+      </tr>
+      <tr>
+        <td>Faster T. F.</td>
+        <td>$\mathcal{O}((n + |\mathcal{L}_{\mathcal{C}}| + |\mathcal{F}|$ $log$ $|\Sigma|)$ $log$ $n)$</td>
+        <td>$\mathcal{O}(n + |\mathcal{L}_{\mathcal{C}}|$ $log$ $|\Sigma|)$</td>
+      </tr>
+      <tr>
+        <td>New Algorithms for T. F.</td>
+        <td>$\mathcal{O}((n + |\mathcal{L}|)$ $log$ $n)$</td>
+        <td>$\mathcal{O}(n + |\mathcal{L}|$ $log$ $|\Sigma|)$</td>
+      </tr>
+      <tr>
+        <td>Efficient T. F. via Parikh Mapping</td>
+        <td></td>
+        <td>$\mathcal{O}(n|\Sigma|$ $log$ $n$ $log$ $|\Sigma|)$</td>
+      </tr>
+    </table>
+  </small>
+</section>
 
-          <section>
-            <h3>Passage de $|\mathcal{L}|$ à $|\mathcal{L}_{\mathcal{C}}|$ : nouvelle méthode</h3>
+<section>
+  <h3>Passage de $|\mathcal{L}|$ à $|\mathcal{L}_{\mathcal{C}}|$ : nouvelle méthode</h3>
 
-            <!--
-              TODO méthode introduite dans l'article (intuition méthodes précendentes vs cet article)
-              (par opposition au tableau + liste changements)
-              (ne pas recalculer les parties redondantes des fp) 
-            -->
-          </section>
+  <!--
+      TODO méthode introduite dans l'article (intuition méthodes précendentes vs cet article)
+      (par opposition au tableau + liste changements)
+      (ne pas recalculer les parties redondantes des fp) 
+    -->
+</section>
 
-          <section>
-            <h3>Vue d'ensemble de la méthode</h3>
+<section>
+  <h3>Vue d'ensemble de la méthode</h3>
 
-          	<ul>
-      			  <li>Construire l'arbre des suffixes de $s$</li>
-      			  <li>À partir de l'arbre des suffixes, construire un arbre des participations</li>
-      			  <li>À partir de l'arbre des participations, nommer et retourner tous les fingerprints de $s$</li>
-          	</ul>
-          </section>
-        </section>
+  <ul>
+    <li>Construire l'arbre des suffixes de $s$</li>
+    <li>À partir de l'arbre des suffixes, construire un arbre des participations</li>
+    <li>À partir de l'arbre des participations, nommer et retourner tous les fingerprints de $s$</li>
+  </ul>
+</section>
+</section>
 
-        <section>
-          <section data-state="submerge">
-            <h1>Participation Tree</h1>
-          </section>
-          <section>
-            <h3>Principes</h3>
+<section>
+  <section data-state="submerge">
+    <h1>Participation Tree</h1>
+  </section>
+  <section>
+    <h3>Principes</h3>
 
-            <ul>
-            	<li>Noté $PT$</li>
-            	<li>Construit à partir de l'arbre des suffixes de $s$</li>
-            	<li>Contient l'ensemble des fingerprints $f$ de $\mathcal{F}$</li>
-            </ul>
-          </section>
-          
-          <section>
-            <h3>Construction de l'arbre (1/5)</h3>
+    <ul>
+      <li>Noté $PT$</li>
+      <li>Construit à partir de l'arbre des suffixes de $s$</li>
+      <li>Contient l'ensemble des fingerprints $f$ de $\mathcal{F}$</li>
+    </ul>
+  </section>
+  
+  <section>
+    <h3>Construction de l'arbre (1/5)</h3>
 
-            État initial : l'arbre des suffixes (<em>ataltatlt#</em>)
+    État initial : l'arbre des suffixes (<em>ataltatlt#</em>)
 
-            <img src="img/construction-0.svg">
-          </section>
-          
-          <section>
-            <h3>Construction de l'arbre (2/5)</h3>
+    <img src="img/construction-0.svg">
+  </section>
+  
+  <section>
+    <h3>Construction de l'arbre (2/5)</h3>
 
-            On réduit tous les caractères à partir de la seconde occurrence du premier caractère du chemin à $\varepsilon$.
+    On réduit tous les caractères à partir de la seconde occurrence du premier caractère du chemin à $\varepsilon$.
 
-            <img src="img/construction-1.svg">
-          </section>
-          
-          <section>
-            <h3>Construction de l'arbre (3/5)</h3>
+    <img src="img/construction-1.svg">
+  </section>
+  
+  <section>
+    <h3>Construction de l'arbre (3/5)</h3>
 
-            De la racine au dernier caractère avant $\varepsilon$, on ne garde que la première occurrence de chaque caractère.
+    De la racine au dernier caractère avant $\varepsilon$, on ne garde que la première occurrence de chaque caractère.
 
-            <img src="img/construction-2.svg">
-          </section>
-          
-          <section>
-            <h3>Construction de l'arbre (4/5)</h3>
+    <img src="img/construction-2.svg">
+  </section>
+  
+  <section>
+    <h3>Construction de l'arbre (4/5)</h3>
 
-            On remplace le dernier caractère de chaque chemin de la racine à une feuille par $\varepsilon$
+    On remplace le dernier caractère de chaque chemin de la racine à une feuille par $\varepsilon$
 
-            <img src="img/construction-3.svg">
-          </section>
-          
-          <section>
-            <h3>Construction de l'arbre (5/5)</h3>
+    <img src="img/construction-3.svg">
+  </section>
+  
+  <section>
+    <h3>Construction de l'arbre (5/5)</h3>
 
-            On déploit l'arbre et on supprime les branches vides
+    On déploit l'arbre et on supprime les branches vides
 
-            <img src="img/construction-45.svg">
-          </section>
+    <img src="img/construction-45.svg">
+  </section>
 
-          <section>
-            <h3>Théorème</h3>
+  <section>
+    <h3>Théorème</h3>
 
-            $\Phi$ étant définie comme une fonction retournant l'ensemble des localisations maximales correspondant à un chemin $z$ de $PT$,<br>
-            <br>
-            <strong>toutes les localisations maximales sont dans l'image $\Phi(z)$ d'un chemin $z$ dans $PT(s = s_{1}..s_{n})$, et la taille de $PT(s)$ est $\mathcal{O}(|\mathcal{L}_{\mathcal{C}}|)$</strong>
-          </section>
+    $\Phi$ étant définie comme une fonction retournant l'ensemble des localisations maximales correspondant à un chemin $z$ de $PT$,<br>
+    <br>
+    <strong>toutes les localisations maximales sont dans l'image $\Phi(z)$ d'un chemin $z$ dans $PT(s = s_{1}..s_{n})$, et la taille de $PT(s)$ est $\mathcal{O}(|\mathcal{L}_{\mathcal{C}}|)$</strong>
+  </section>
 
-          <section>
-            <h3>Du suffix tree au participation tree (1/4)</h3>
-	    <h4>Idées</h4>
-	    <ul>
-	      <li>Calculer les participations des branches aux
-		fingerprints les unes après les autres</li>
-	      <li>Marquer les arêtes calculées pour ne pas les recalculer</li>
-	      <li>Calculer seulement les deltas des valeurs
-		nécessaires à chaque pas</li>
-	      </ul>
-	    <img src="img/suffix-tree.svg"> <span style="position:
-	    relative; top: -150px;">→</span> <img src="img/participation-tree.svg">
-          </section>
+  <section>
+    <h3>Du suffix tree au participation tree (1/4)</h3>
+    <h4>Idées</h4>
+    <ul>
+      <li>Calculer les participations des branches aux
+	fingerprints les unes après les autres</li>
+      <li>Marquer les arêtes calculées pour ne pas les recalculer</li>
+      <li>Calculer seulement les deltas des valeurs
+	nécessaires à chaque pas</li>
+    </ul>
+    <img src="img/suffix-tree.svg"> <span style="position:
+						 relative; top: -150px;">→</span> <img src="img/participation-tree.svg">
+  </section>
 
-          <section>
-            <h3>Du suffix tree au participation tree (2/4)</h3>
-	    <h4>Algorithme</h4>
-	    <pre><code data-trim>
-		Construire_PT(ST)
-  1.  Calculer chaque première occurrence depuis s₁
-  2.  Trouver la prochaine occurrence de s₁
-  3.  Pour i de 1 à n faire :
-  4.      courant ← Feuille i dans ST
-  5.      Tant que courant n'est pas marqué et n'est pas la racine :
-  6.          précédent ← Parent de courant dans ST
-  7.          Calculer la participation de l'arête (précédent, courant)
-  8.          Marquer courant
-  9.          courant ← précédent
-  10.         Calculer chaque première occurrence depuis sᵢ₊₁
-  11.         Calculer la prochaine occurrence de sᵢ₊₁
-  12.     Fin du tant que
-  13. Fin du pour
-	    </code></pre>
-          </section>
-          <section>
-            <h3>Du suffix tree au participation tree (3/4)</h3>
-	    <h4>Calcul de la participation de l'arête</h4>
-	    Pour la branche :
-	    <br>
-	    <img src="img/suffix-tree-participation.svg">
-	    <br>
-	    On calcule
-	    <br>
-	    <img src="img/participation.svg">
-	    <br>
-	    La participation d'une arête est alors l'intersection
-	    entre sa chaîne et $s_i .. s_{p-1}$. Peut valoir
-	    $\varepsilon$.
-          </section>
-          <section>
-            <h3>Du suffix tree au participation tree (4/4)</h3>
-	    <h4>Astuces algorithmiques</h4>
-	    <ul>
-	      <li>Représentation des « chaque première occurrence »
-	      dans un arbre AVL</li>
-	      <li>Stockage des positions des caractères dans des
-	      listes pour pouvoir calculer l'itération suivante
-	      depuis l'itération courante en $\mathcal{O}(log |Σ|)$</li>
-	    </ul><br><br><br><br>
-	    <p>→ $\mathcal{O}(n×log |Σ| + |\mathcal{L}_\mathcal{c}|)$
-	    en temps</p>
-          </section>
-        </section>
+  <section>
+    <h3>Du suffix tree au participation tree (2/4)</h3>
+    <h4>Algorithme</h4>
+    <pre><code data-trim>
+	Construire_PT(ST)
+	1.  Calculer chaque première occurrence depuis s₁
+	2.  Trouver la prochaine occurrence de s₁
+	3.  Pour i de 1 à n faire :
+	4.      courant ← Feuille i dans ST
+	5.      Tant que courant n'est pas marqué et n'est pas la racine :
+	6.          précédent ← Parent de courant dans ST
+	7.          Calculer la participation de l'arête (précédent, courant)
+	8.          Marquer courant
+	9.          courant ← précédent
+	10.         Calculer chaque première occurrence depuis sᵢ₊₁
+	11.         Calculer la prochaine occurrence de sᵢ₊₁
+	12.     Fin du tant que
+	13. Fin du pour
+    </code></pre>
+  </section>
+  <section>
+    <h3>Du suffix tree au participation tree (3/4)</h3>
+    <h4>Calcul de la participation de l'arête</h4>
+    Pour la branche :
+    <br>
+    <img src="img/suffix-tree-participation.svg">
+    <br>
+    On calcule
+    <br>
+    <img src="img/participation.svg">
+    <br>
+    La participation d'une arête est alors l'intersection
+    entre sa chaîne et $s_i .. s_{p-1}$. Peut valoir
+    $\varepsilon$.
+  </section>
+  <section>
+    <h3>Du suffix tree au participation tree (4/4)</h3>
+    <h4>Astuces algorithmiques</h4>
+    <ul>
+      <li>Représentation des « chaque première occurrence »
+	dans un arbre AVL</li>
+      <li>Stockage des positions des caractères dans des
+	listes pour pouvoir calculer l'itération suivante
+	depuis l'itération courante en $\mathcal{O}(log |Σ|)$</li>
+    </ul><br><br><br><br>
+    <p>→ $\mathcal{O}(n×log |Σ| + |\mathcal{L}_\mathcal{c}|)$
+      en temps</p>
+  </section>
+</section>
 
-        
-        <section>
-          <section data-state="sunset">
-            <h1>Nommage des fingerprints</h1>
-          </section>
 
-          <section>
-            <h3>Pourquoi donner des noms aux fingerprints ?</h3>
-	    <ul>
-	      <li>Maintenir un treillis de fingerprints est couteux</li>
-	      <li>Il faut pouvoir répondre aux différentes questions
-		présentées en introduction rapidement</li>
-	    </ul>
-          </section>
+<section>
+  <section data-state="sunset">
+    <h1>Nommage des fingerprints</h1>
+  </section>
 
-          <section>
-            <h3>Nommage d'une fingerprint</h3>
-	    <h4>Nommage hierarchique</h4>
-	    <p>Nom de la fingerprint $\{a,t,l\}$ sur l'alphabet $(␣, a,
-	      e, l, m, r, s, t)$</p>
-	    <table class="table table-bordered table-centered">
-	      <tr>
-		<td>Niveau 4</td>
-		<td colspan="8">6</td>
-	      </tr>
-	      <tr>
-		<td>Niveau 3</td>
-		<td colspan="4" class="active">4</td>
-		<td colspan="4" class="danger">5</td>
-	      </tr>
-	      <tr>
-		<td>Niveau 2</td>
-		<td colspan="2" class="success">2</td>
-		<td colspan="2" class="success">2</td>
-		<td colspan="2" class="warning">3</td>
-		<td colspan="2" class="success">2</td>
-	      </tr>
-	      <tr>
-		<td>Niveau 1</td>
-		<td class="success">0</td>
-		<td class="success">1</td>
-		<td class="success">0</td>
-		<td class="success">1</td>
-		<td class="warning">0</td>
-		<td class="warning">0</td>
-		<td class="success">0</td>
-		<td class="success">1</td>
-	      </tr>
-	      <tr>
-		<td>Caractère</td>
-		<td>␣</td>
-		<td>a</td>
-		<td>e</td>
-		<td>l</td>
-		<td>m</td>
-		<td>r</td>
-		<td>s</td>
-		<td>t</td>
-	      </tr>
-	    </table>
-          </section>
+  <section>
+    <h3>Pourquoi donner des noms aux fingerprints ?</h3>
+    <ul>
+      <li>Maintenir un treillis de fingerprints est couteux</li>
+      <li>Il faut pouvoir répondre aux différentes questions
+	présentées en introduction rapidement</li>
+    </ul>
+  </section>
 
-          <section>
-            <h3>Nommer plusieurs fingerprints à la fois (1/7)</h3>
-	    <h4>Utiliser les changements entre fingerprints</h4>
-	    <p>L'idée est de trouver une manière efficace de nommer
-	      des fingerprints que l'on peut obtenir en ajoutant
-	      successivement un élément :</p>
-	    $$
-	    (\{a\}, \{a, t\}, \{a, t, l\})
-	    $$
-	    
-	  </section>
-          <section>
-            <h3>Nommer plusieurs fingerprints à la fois (2/7)</h3>
-	    <h4>Utiliser les changements entre fingerprints</h4>
-	    <p>Tableau initial :</p>
-	    <table class="table table-condensed table-bordered table-centered">
-	      <tr>
-		<td colspan="8">␣</td>
-	      </tr>
-	      <tr>
-		<td colspan="4">␣</td>
-		<td colspan="4">␣</td>
-	      </tr>
-	      <tr>
-		<td colspan="2">␣</td>
-		<td colspan="2">␣</td>
-		<td colspan="2">␣</td>
-		<td colspan="2">␣</td>
-	      </tr>
-	      <tr>
-		<td>0</td>
-		<td>0</td>
-		<td>0</td>
-		<td>0</td>
-		<td>0</td>
-		<td>0</td>
-		<td>0</td>
-		<td>0</td>
-	      </tr>
-	    </table>
-	    <p>Après le changement $(a, 1)$ :</p>
-	    <table class="table table-condensed table-bordered table-centered">
-	      <tr>
-		<td colspan="8">␣</td>
-	      </tr>
-	      <tr>
-		<td colspan="4">␣</td>
-		<td colspan="4">␣</td>
-	      </tr>
-	      <tr>
-		<td colspan="2">␣</td>
-		<td colspan="2">␣</td>
-		<td colspan="2">␣</td>
-		<td colspan="2">␣</td>
-	      </tr>
-	      <tr>
-		<td>0</td>
-		<td>1</td>
-		<td>0</td>
-		<td>0</td>
-		<td>0</td>
-		<td>0</td>
-		<td>0</td>
-		<td>0</td>
-	      </tr>
-	    </table>
-          </section>
+  <section>
+    <h3>Nommage d'une fingerprint</h3>
+    <h4>Nommage hierarchique</h4>
+    <p>Nom de la fingerprint $\{a,t,l\}$ sur l'alphabet $(␣, a,
+      e, l, m, r, s, t)$</p>
+    <table class="table table-bordered table-centered">
+      <tr>
+	<td>Niveau 4</td>
+	<td colspan="8">6</td>
+      </tr>
+      <tr>
+	<td>Niveau 3</td>
+	<td colspan="4" class="active">4</td>
+	<td colspan="4" class="danger">5</td>
+      </tr>
+      <tr>
+	<td>Niveau 2</td>
+	<td colspan="2" class="success">2</td>
+	<td colspan="2" class="success">2</td>
+	<td colspan="2" class="warning">3</td>
+	<td colspan="2" class="success">2</td>
+      </tr>
+      <tr>
+	<td>Niveau 1</td>
+	<td class="success">0</td>
+	<td class="success">1</td>
+	<td class="success">0</td>
+	<td class="success">1</td>
+	<td class="warning">0</td>
+	<td class="warning">0</td>
+	<td class="success">0</td>
+	<td class="success">1</td>
+      </tr>
+      <tr>
+	<td>Caractère</td>
+	<td>␣</td>
+	<td>a</td>
+	<td>e</td>
+	<td>l</td>
+	<td>m</td>
+	<td>r</td>
+	<td>s</td>
+	<td>t</td>
+      </tr>
+    </table>
+  </section>
 
-          <section>
-            <h3>Nommer plusieurs fingerprints à la fois (3/7)</h3>
-	    <h4>Utiliser les changements entre fingerprints</h4>
-	    <p>Après $(l, 1)$ :</p>
-	    <table class="table table-condensed table-bordered table-centered">
-	      <tr>
-		<td colspan="8">␣</td>
-	      </tr>
-	      <tr>
-		<td colspan="4">␣</td>
-		<td colspan="4">␣</td>
-	      </tr>
-	      <tr>
-		<td colspan="2">␣</td>
-		<td colspan="2">␣</td>
-		<td colspan="2">␣</td>
-		<td colspan="2">␣</td>
-	      </tr>
-	      <tr>
-		<td>0</td>
-		<td>1</td>
-		<td>0</td>
-		<td>1</td>
-		<td>0</td>
-		<td>0</td>
-		<td>0</td>
-		<td>0</td>
-	      </tr>
-	    </table>
-	    <p>Après $(t, 1)$ :</p>
-	    <table class="table table-condensed table-bordered table-centered">
-	      <tr>
-		<td colspan="8">␣</td>
-	      </tr>
-	      <tr>
-		<td colspan="4">␣</td>
-		<td colspan="4">␣</td>
-	      </tr>
-	      <tr>
-		<td colspan="2">␣</td>
-		<td colspan="2">␣</td>
-		<td colspan="2">␣</td>
-		<td colspan="2">␣</td>
-	      </tr>
-	      <tr>
-		<td>0</td>
-		<td>1</td>
-		<td>0</td>
-		<td>1</td>
-		<td>0</td>
-		<td>0</td>
-		<td>0</td>
-		<td>1</td>
-	      </tr>
-	    </table>
-          </section>
+  <section>
+    <h3>Nommer plusieurs fingerprints à la fois (1/7)</h3>
+    <h4>Utiliser les deltas de participation entre fingerprints</h4>
+    <p>L'idée est de trouver une manière efficace de nommer
+      des fingerprints que l'on peut obtenir en ajoutant
+      successivement un élément :</p>
+    $$
+    (\{a\}, \{a, t\}, \{a, t, l\})
+    $$
+    
+  </section>
+  <section>
+    <h3>Nommer plusieurs fingerprints à la fois (2/7)</h3>
+    <h4>Utiliser les deltas de participation entre fingerprints</h4>
+    <p>Tableau initial :</p>
+    <table class="table table-condensed table-bordered table-centered">
+      <tr>
+	<td colspan="8">␣</td>
+      </tr>
+      <tr>
+	<td colspan="4">␣</td>
+	<td colspan="4">␣</td>
+      </tr>
+      <tr>
+        <td colspan="2">␣</td>
+        <td colspan="2">␣</td>
+        <td colspan="2">␣</td>
+        <td colspan="2">␣</td>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+    </table>
+    <p>Après le changement $(a, 1)$ :</p>
+    <table class="table table-condensed table-bordered table-centered">
+      <tr>
+        <td colspan="8">␣</td>
+      </tr>
+      <tr>
+        <td colspan="4">␣</td>
+        <td colspan="4">␣</td>
+      </tr>
+      <tr>
+        <td colspan="2">␣</td>
+        <td colspan="2">␣</td>
+        <td colspan="2">␣</td>
+        <td colspan="2">␣</td>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+    </table>
+  </section>
 
-          <section>
-            <h3>Nommer plusieurs fingerprints à la fois (4/7)</h3>
-	    <h4>Utiliser les changements entre fingerprints</h4>
-	    
-	    <p>On initialise maintenant le deuxième niveau :</p>
-	    <table class="table table-condensed table-bordered table-centered">
-	      <tr>
-		<td colspan="8">␣</td>
-	      </tr>
-	      <tr>
-		<td colspan="4">␣</td>
-		<td colspan="4">␣</td>
-	      </tr>
-	      <tr>
-		<td colspan="2">(0, 0)</td>
-		<td colspan="2">(0, 0)</td>
-		<td colspan="2">(0, 0)</td>
-		<td colspan="2">(0, 0)</td>
-	      </tr>
-	      <tr>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-	      </tr>
-	    </table>
-          </section>
+  <section>
+    <h3>Nommer plusieurs fingerprints à la fois (3/7)</h3>
+    <h4>Utiliser les deltas de participation entre fingerprints</h4>
+    <p>Après $(l, 1)$ :</p>
+    <table class="table table-condensed table-bordered table-centered">
+      <tr>
+        <td colspan="8">␣</td>
+      </tr>
+      <tr>
+        <td colspan="4">␣</td>
+        <td colspan="4">␣</td>
+      </tr>
+      <tr>
+        <td colspan="2">␣</td>
+        <td colspan="2">␣</td>
+        <td colspan="2">␣</td>
+        <td colspan="2">␣</td>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>1</td>
+        <td>0</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+    </table>
+    <p>Après $(t, 1)$ :</p>
+    <table class="table table-condensed table-bordered table-centered">
+      <tr>
+        <td colspan="8">␣</td>
+      </tr>
+      <tr>
+        <td colspan="4">␣</td>
+        <td colspan="4">␣</td>
+      </tr>
+      <tr>
+        <td colspan="2">␣</td>
+        <td colspan="2">␣</td>
+        <td colspan="2">␣</td>
+        <td colspan="2">␣</td>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>1</td>
+        <td>0</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+      </tr>
+    </table>
+  </section>
 
-          <section>
-            <h3>Nommer plusieurs fingerprints à la fois (5/7)</h3>
-	    <h4>Utiliser les changements entre fingerprints</h4>
-	    <p>Puis pour chaque changement effectué au premier niveau,
-	    on modifie le deuxième niveau :</p>
-	    <table class="table table-condensed table-bordered table-centered">
-	      <tr>
-		<td colspan="8">␣</td>
-	      </tr>
-	      <tr>
-		<td colspan="4">␣</td>
-		<td colspan="4">␣</td>
-	      </tr>
-	      <tr>
-		<td colspan="2">(0, 1)</td>
-		<td colspan="2">(0, 0)</td>
-		<td colspan="2">(0, 0)</td>
-		<td colspan="2">(0, 0)</td>
-	      </tr>
-	      <tr>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-	      </tr>
-	    </table>
-	    <p>Puis</p>
-	    	    <table class="table table-condensed table-bordered table-centered">
-	      <tr>
-		<td colspan="8">␣</td>
-	      </tr>
-	      <tr>
-		<td colspan="4">␣</td>
-		<td colspan="4">␣</td>
-	      </tr>
-	      <tr>
-		<td colspan="2">(0, 1)</td>
-		<td colspan="2">(0, 1)</td>
-		<td colspan="2">(0, 0)</td>
-		<td colspan="2">(0, 0)</td>
-	      </tr>
-	      <tr>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-	      </tr>
-	    </table>
-          </section>
+  <section>
+    <h3>Nommer plusieurs fingerprints à la fois (4/7)</h3>
+    <h4>Utiliser les deltas de participation entre fingerprints</h4>
+    
+    <p>On initialise maintenant le deuxième niveau :</p>
+    <table class="table table-condensed table-bordered table-centered">
+      <tr>
+        <td colspan="8">␣</td>
+      </tr>
+      <tr>
+        <td colspan="4">␣</td>
+        <td colspan="4">␣</td>
+      </tr>
+      <tr>
+        <td colspan="2">(0, 0)</td>
+        <td colspan="2">(0, 0)</td>
+        <td colspan="2">(0, 0)</td>
+        <td colspan="2">(0, 0)</td>
+      </tr>
+      <tr>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+      </tr>
+    </table>
+  </section>
 
-          <section>
-            <h3>Nommer plusieurs fingerprints à la fois (6/7)</h3>
-	    <h4>Utiliser les changements entre fingerprints</h4>
-	    <p>Puis</p>
-	    <table class="table table-condensed table-bordered table-centered">
-	      <tr>
-		<td colspan="8">␣</td>
-	      </tr>
-	      <tr>
-		<td colspan="4">␣</td>
-		<td colspan="4">␣</td>
-	      </tr>
-	      <tr>
-		<td colspan="2">(0, 1)</td>
-		<td colspan="2">(0, 1)</td>
-		<td colspan="2">(0, 0)</td>
-		<td colspan="2">(0, 1)</td>
-	      </tr>
-	      <tr>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-	      </tr>
-	    </table>
-	    <p>On trie ensuite les pairs distinctes obtenues : (0, 0) ≤
-	      (0, 1).</p>
-	    <p>Puis on donne un nouveau nom à chaque pair :</p>
-	    <ul>
-	      <li>(0, 0) → <b>2</b></li>
-	      <li>(0, 1) → <b>3</b></li>
-	    </ul>
-          </section>
+  <section>
+    <h3>Nommer plusieurs fingerprints à la fois (5/7)</h3>
+    <h4>Utiliser les deltas de participation entre fingerprints</h4>
+    <p>Puis pour chaque changement effectué au premier niveau,
+      on modifie le deuxième niveau :</p>
+    <table class="table table-condensed table-bordered table-centered">
+      <tr>
+        <td colspan="8">␣</td>
+      </tr>
+      <tr>
+        <td colspan="4">␣</td>
+        <td colspan="4">␣</td>
+      </tr>
+      <tr>
+        <td colspan="2">(0, 1)</td>
+        <td colspan="2">(0, 0)</td>
+        <td colspan="2">(0, 0)</td>
+        <td colspan="2">(0, 0)</td>
+      </tr>
+      <tr>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+      </tr>
+    </table>
+    <p>Puis</p>
+    <table class="table table-condensed table-bordered table-centered">
+      <tr>
+        <td colspan="8">␣</td>
+      </tr>
+      <tr>
+        <td colspan="4">␣</td>
+        <td colspan="4">␣</td>
+      </tr>
+      <tr>
+        <td colspan="2">(0, 1)</td>
+        <td colspan="2">(0, 1)</td>
+        <td colspan="2">(0, 0)</td>
+        <td colspan="2">(0, 0)</td>
+      </tr>
+      <tr>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+      </tr>
+    </table>
+  </section>
 
-          <section>
-            <h3>Nommer plusieurs fingerprints à la fois (7/7)</h3>
-	    <h4>Utiliser les changements entre fingerprints</h4>
-	    <p>On obtient alors</p>
-	    <table class="table table-condensed table-bordered table-centered">
-	      <tr>
-		<td colspan="8">␣</td>
-	      </tr>
-	      <tr>
-		<td colspan="4">␣</td>
-		<td colspan="4">␣</td>
-	      </tr>
-	      <tr>
-		<td colspan="2">3</td>
-		<td colspan="2">3</td>
-		<td colspan="2">2</td>
-		<td colspan="2">3</td>
-	      </tr>
-	      <tr>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-	      </tr>
-	    </table>
-	    <p>On peut maintenant initialiser le 3ᵉ niveau :</p>
-	    <table class="table table-condensed table-bordered table-centered">
-	      <tr>
-		<td colspan="8">␣</td>
-	      </tr>
-	      <tr>
-		<td colspan="4">(2, 2)</td>
-		<td colspan="4">(2, 2)</td>
-	      </tr>
-	      <tr>
-		<td colspan="2">␣</td>
-		<td colspan="2">␣</td>
-		<td colspan="2">␣</td>
-		<td colspan="2">␣</td>
-	      </tr>
-	      <tr>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-		<td>␣</td>
-	      </tr>
-	    </table>
-	    <p>Et continuer ainsi jusqu'à avoir parcouru tous les
-	      niveaux.</p>
-          </section>
+  <section>
+    <h3>Nommer plusieurs fingerprints à la fois (6/7)</h3>
+    <h4>Utiliser les deltas de participation entre fingerprints</h4>
+    <p>Puis</p>
+    <table class="table table-condensed table-bordered table-centered">
+      <tr>
+        <td colspan="8">␣</td>
+      </tr>
+      <tr>
+        <td colspan="4">␣</td>
+        <td colspan="4">␣</td>
+      </tr>
+      <tr>
+        <td colspan="2">(0, 1)</td>
+        <td colspan="2">(0, 1)</td>
+        <td colspan="2">(0, 0)</td>
+        <td colspan="2">(0, 1)</td>
+      </tr>
+      <tr>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+      </tr>
+    </table>
+    <p>On trie ensuite les pairs distinctes obtenues : (0, 0) ≤
+      (0, 1).</p>
+    <p>Puis on donne un nouveau nom à chaque pair :</p>
+    <ul>
+      <li>(0, 0) → <b>2</b></li>
+      <li>(0, 1) → <b>3</b></li>
+    </ul>
+  </section>
 
-	  <section>
-	    <h3>Nommage d'une liste de listes de changements</h3>
-	    <p>Il est possible d'appliquer l'algorithme précédent en
-	      parallèle à plusieurs listes. Il suffit de faire
-	      attention à trier les pairs de chaque étage ensemble
-	      pour maintenir la cohérence des noms…</p>
-	  </section>
+  <section>
+    <h3>Nommer plusieurs fingerprints à la fois (7/7)</h3>
+    <h4>Utiliser les deltas de participation entre fingerprints</h4>
+    <p>On obtient alors</p>
+    <table class="table table-condensed table-bordered table-centered">
+      <tr>
+        <td colspan="8">␣</td>
+      </tr>
+      <tr>
+        <td colspan="4">␣</td>
+        <td colspan="4">␣</td>
+      </tr>
+      <tr>
+        <td colspan="2">3</td>
+        <td colspan="2">3</td>
+        <td colspan="2">2</td>
+        <td colspan="2">3</td>
+      </tr>
+      <tr>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+      </tr>
+    </table>
+    <p>On peut maintenant initialiser le 3ᵉ niveau :</p>
+    <table class="table table-condensed table-bordered table-centered">
+      <tr>
+        <td colspan="8">␣</td>
+      </tr>
+      <tr>
+        <td colspan="4">(2, 2)</td>
+        <td colspan="4">(2, 2)</td>
+      </tr>
+      <tr>
+        <td colspan="2">␣</td>
+        <td colspan="2">␣</td>
+        <td colspan="2">␣</td>
+        <td colspan="2">␣</td>
+      </tr>
+      <tr>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+        <td>␣</td>
+      </tr>
+    </table>
+    <p>Et continuer ainsi jusqu'à avoir parcouru tous les
+      niveaux.</p>
+  </section>
 
-          <section>
-            <h3>Nommage sur l'arbre</h3>
-	    <p>Les branches correspondent à des listes de
-	      changement. L'arbre correpond à une liste de listes de
-	      changements.</p>
-	    <img src="img/participation-tree.svg">
-          </section>
+  <section>
+    <h3>Nommage d'une liste de listes de participations</h3>
+    <p>Il est possible d'appliquer l'algorithme précédent en
+      parallèle à plusieurs listes. Il suffit de faire
+      attention à trier les pairs de chaque étage ensemble
+      pour maintenir la cohérence des noms…</p>
+  </section>
 
-	  <section>
-	    <h3>Répondre aux questions en utilisant les noms</h3>
-	    <p>En conservant le mapping des noms et les noms des
-	      fingerprints obtenues, il est facile de répondre aux
-	      questions posées dans l'introduction :</p>
-	    <ul>
-	      <li><b>Trouver le nombre de fingerprints :</b> Autant de
-		fingerprints qu'il y a de noms</li>
-	      <li><b>Décider si une fingerprint est dans
-		$\mathcal{F}$ :</b> Nommer la fingerprint et regarder
-		si le nom est dans l'ensemble des noms calculés</li>
-	      <li>…</li>
-	    </ul>
-	  </section>
-        </section>
+  <section>
+    <h3>Nommage sur l'arbre</h3>
+    <p>Les branches correspondent à des listes de
+      changement. L'arbre correpond à une liste de listes de
+      changements.</p>
+    <img src="img/participation-tree.svg">
+  </section>
 
-        <section data-state="cobalt">
-          <h1>Conclusion</h1>
-        </section>
-      </div>
+  <section>
+    <h3>Répondre aux questions en utilisant les noms</h3>
+    <p>En conservant le mapping des noms et les noms des
+      fingerprints obtenues, il est facile de répondre aux
+      questions posées dans l'introduction :</p>
+    <ul>
+      <li><b>Trouver le nombre de fingerprints :</b> Autant de
+        fingerprints qu'il y a de noms</li>
+      <li><b>Décider si une fingerprint est dans
+          $\mathcal{F}$ :</b> Nommer la fingerprint et regarder
+        si le nom est dans l'ensemble des noms calculés</li>
+      <li>…</li>
+    </ul>
+  </section>
+</section>
 
-    </div>
+<section data-state="cobalt">
+  <h1>Conclusion</h1>
+</section>
+</div>
 
-    <script src="lib/js/head.min.js"></script>
-    <script src="js/reveal.min.js"></script>
+</div>
 
-    <script>
-      // Full list of configuration options available here:
-      // https://github.com/hakimel/reveal.js#configuration
-      Reveal.initialize({
-      controls: true,
-      progress: true,
-      history: true,
-      center: true,
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
 
-      theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-      transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+<script>
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+  controls: true,
+  progress: true,
+  history: true,
+  center: true,
 
-      math: {
-      mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
-      config: 'TeX-AMS_HTML-full' // See http://docs.mathjax.org/en/latest/config-files.html
-      },
-      // Parallax scrolling
-      // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-      // parallaxBackgroundSize: '2100px 900px',
+  theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+  transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
 
-      // Optional libraries used to extend on reveal.js
-      dependencies: [{
-      src: 'lib/js/classList.js',
-      condition: function() {
-      return !document.body.classList;
-      }
-      }, {
-      src: 'plugin/markdown/marked.js',
-      condition: function() {
-      return !!document.querySelector('[data-markdown]');
-      }
-      }, {
-      src: 'plugin/markdown/markdown.js',
-      condition: function() {
-      return !!document.querySelector('[data-markdown]');
-      }
-      }, {
-      src: 'plugin/highlight/highlight.js',
-      async: true,
-      callback: function() {
-      hljs.initHighlightingOnLoad();
-      }
-      }, {
-      src: 'plugin/zoom-js/zoom.js',
-      async: true,
-      condition: function() {
-      return !!document.body.classList;
-      }
-      }, {
-      src: 'plugin/notes/notes.js',
-      async: true,
-      condition: function() {
-      return !!document.body.classList;
-      }
-      }, {
-      src: 'plugin/math/math.js',
-      async: true
-      }]
-      });
-    </script>
+  math: {
+  mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
+  config: 'TeX-AMS_HTML-full' // See http://docs.mathjax.org/en/latest/config-files.html
+  },
+  // Parallax scrolling
+  // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+  // parallaxBackgroundSize: '2100px 900px',
 
-  </body>
+  // Optional libraries used to extend on reveal.js
+  dependencies: [{
+  src: 'lib/js/classList.js',
+  condition: function() {
+  return !document.body.classList;
+  }
+  }, {
+  src: 'plugin/markdown/marked.js',
+  condition: function() {
+  return !!document.querySelector('[data-markdown]');
+  }
+  }, {
+  src: 'plugin/markdown/markdown.js',
+  condition: function() {
+  return !!document.querySelector('[data-markdown]');
+  }
+  }, {
+  src: 'plugin/highlight/highlight.js',
+  async: true,
+  callback: function() {
+  hljs.initHighlightingOnLoad();
+  }
+  }, {
+  src: 'plugin/zoom-js/zoom.js',
+  async: true,
+  condition: function() {
+  return !!document.body.classList;
+  }
+  }, {
+  src: 'plugin/notes/notes.js',
+  async: true,
+  condition: function() {
+  return !!document.body.classList;
+  }
+  }, {
+  src: 'plugin/math/math.js',
+  async: true
+  }]
+  });
+</script>
+
+</body>
 
 </html>
