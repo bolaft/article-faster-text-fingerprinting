@@ -249,9 +249,39 @@
             <br>
             <b>toutes les locations maximales sont dans l'image $\Phi(z)$ d'un chemin $z$ dans $PT(s = s_{1}..s_{n})$, et la taille de $PT(s)$ est $\mathcal{O}(|\mathcal{L}_{\mathcal{C}}|)$</b>
           </section>
-          
+
           <section>
-            <h3>Transformer le ST en PT</h3>
+            <h3>Du suffix tree au participation tree (1/2)</h3>
+	    <h4>Idées</h4>
+	    <ul>
+	      <li>Calculer les participations des branches aux
+		fingerprints les unes après les autres</li>
+	      <li>Marquer les arêtes calculées pour ne pas les recalculer</li>
+	      <li>Calculer seulement les deltas des valeurs
+		nécessaires à chaque pas</li>
+	      </ul>
+	    <img src="img/suffix-tree.svg"> <span style="position:
+	    relative; top: -150px;">→</span> <img src="img/participation-tree.svg">
+          </section>
+
+          <section>
+            <h3>Du suffix tree au participation tree (2/2)</h3>
+	    <h4>Algorithme</h4>
+	    <pre><code data-trim>
+		Construire_PT(ST)
+  1.  Calculer chaque première occurrence depuis s₁
+  2.  Trouver l'occurrence suivante de s₁
+  3.  Pour i de 1 à n faire :
+  4.      courant ← Feuille i dans ST
+  5.      Tant que courant n'est pas marqué et n'est pas la racine :
+  6.          précédent ← Parent de courant dans ST
+  7.          Calculer la participation de l'arête (précédent, courant)
+  8.          Marquer courant
+  9.          courant ← précédent
+  10.         Calculer chaque première occurrence depuis sᵢ₊₁
+  11.     Fin du tant que
+  12. Fin du pour
+	    </code></pre>
           </section>
         </section>
 
