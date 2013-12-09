@@ -198,8 +198,8 @@
                 </tr>
                 <tr>
                   <td>Efficient T. F. via Parikh Mapping</td>
-                  <td>$\mathcal{O}(n|\Sigma|log$ $n$ $log$ $|\Sigma|)$</td>
                   <td></td>
+                  <td>$\mathcal{O}(n|\Sigma|$ $log$ $n$ $log$ $|\Sigma|)$</td>
                 </tr>
               </table>
             </small>
@@ -241,9 +241,45 @@
           </section>
           
           <section>
-            <h3>Construction de l'arbre</h3>
+            <h3>Construction de l'arbre (1/5)</h3>
+
+            État initial : l'arbre des préfixes (<em>ataltatlt#</em>)
+
+            <img src="img/construction-0.svg">
           </section>
           
+          <section>
+            <h3>Construction de l'arbre (2/5)</h3>
+
+            On réduit tous les caractères à partir de la seconde occurrence du premier caractère du chemin à $\varepsilon$.
+
+            <img src="img/construction-1.svg">
+          </section>
+          
+          <section>
+            <h3>Construction de l'arbre (3/5)</h3>
+
+            De la racine au dernier caractère avant $\varepsilon$, on ne garde que la première occurrence de chaque caractère.
+
+            <img src="img/construction-2.svg">
+          </section>
+          
+          <section>
+            <h3>Construction de l'arbre (4/5)</h3>
+
+            On remplace le dernier caractère de chaque chemin de la racine à une feuille par $\varepsilon$
+
+            <img src="img/construction-3.svg">
+          </section>
+          
+          <section>
+            <h3>Construction de l'arbre (5/5)</h3>
+
+            On déploit l'arbre et on supprime les branches vides
+
+            <img src="img/construction-45.svg">
+          </section>
+
           <section>
             <h3>Théorème</h3>
 
