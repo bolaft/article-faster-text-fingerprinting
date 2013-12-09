@@ -7,8 +7,8 @@
 \usepackage{graphicx}
 \usepackage{listings}
 \usepackage{caption}
+\usepackage{wrapfig}
 
-\graphicspath{{./slides/img/}}
 \DeclareGraphicsExtensions{.png, .jpeg, .jpg, .svg}
 
 \title{Faster Text Fingerprinting}
@@ -23,23 +23,44 @@
 
 \section{Introduction}
 
-\subsection{Qu'est ce qu'un \textit{fingerprint} ?}
+\subsection{Qu'est ce qu'un \emph{fingerprint} ?}
 
-Pour $s = s_{1} .. s_{n}$ un texte sur un alphabet $\Sigma$, un \textit{fingerprint} $f$ est un ensemble des caractères distincts contenus dans l'une de ses sous-chaînes. Le \textit{fingerprinting} consiste à calculer l'ensemble $\mathcal{F}$ de tous les \textit{fingerprints} $f$ de toutes les sous-chaines de $s$.  \newline
+Pour $s = s_{1} .. s_{n}$ un texte sur un alphabet $\Sigma$, un \textit{fingerprint} $f$ est un ensemble des caractères distincts contenus dans l'une de ses sous-chaînes. Le \emph{fingerprinting} consiste à calculer l'ensemble $\mathcal{F}$ de tous les \emph{fingerprints} $f$ de toutes les sous-chaines de $s$.  \newline
 
-Par exemple, pour la chaîne $s = a_{1} b_{2} c_{3} a_{4} a_{5} d_{6} d_{7} b_{8}$, le \textit{fingerprint} de $[3,7]$ est $cad$.
+Par exemple, pour la chaîne $s = a_{1} b_{2} c_{3} a_{4} a_{5} d_{6} d_{7} b_{8}$, le \emph{fingerprint} de $[3,7]$ est $\{cad\}$. \newline
+
+Le \emph{fingerprinting} d'un texte $s$ c'est le calcul de tous les $f$ de $\mathcal{F}$.
 
 \subsection{Applications possibles}
 
+Les fingerprints sont utiles quand l'on souhaite travailler sur des ensembles de caractéristiques plutôt que des séquences de caractéristiques. On peut dire que les \emph{fingerprints} sont aux ensembles ce que les n-grams sont aux séquences. En bioinformatique, les \emph{fingerprints} sont utilisés pour la recherche approchée de chaîne de caractères. En traitement des langues, ils sont utilisés pour l'apprentissage de distributions ensemblistes. Par exemple, pour un classificateur entraîné pour désambiguiser les mots, on pourrait apprendre la distribution des \emph{fingerprints} dans des patrons donnés : \newline
+
+\emph{It might be a \{Adj, Adv\} match.}
+
 \subsection{Problèmes soulevés}
 
-\subsection{Portée de l'article}
+\begin{itemize}
+	\item Calculer l'ensemble $\mathcal{F}$ des \emph{fingerprints}
+	\item Déterminer si un \emph{fingerprint} $f$ est dans $\mathcal{F}$
+	\item Retrouver les occurrences de $f$ dans $s$
+	\item Calculer le nombre de \emph{fingerprints} de taille $k$ dans $s$
+	\item ...
+\end{itemize}
+
+Cet article s'intéresse principalement au premier de ces problèmes : calculer l'ensemble $\mathcal{F}$ des \emph{fingerprints}.
 
 \subsection{Avant de commencer}
 
+Deux notions importantes sont à connaître avant de comprendre l'apport de l'article sur le problème du calcul de $\mathcal{F}$ :
+
+\begin{itemize}
+	\item Les localisations maximales
+	\item Les copies et les classes d'équivalence
+\end{itemize}
+
 \subsubsection{Localisations maximales}
 
-On note $\mathcal{C}$ un ensemble de lettres de $\Sigma$. Une location maximale de $\mathcal{C}$ dans $s$ est un intervalle $[i,j]$ tel que :
+On note $\mathcal{C}$ un ensemble de lettres de $\Sigma$. Une location maximale de $\mathcal{C}$ dans $s$ est un intervalle $[i,j]$ tel que : \newline
 		
 \begin{itemize}
 	\item $\mathcal{C}_{s}(i,j) = \mathcal{C}$
@@ -59,7 +80,22 @@ Par exemple, pour la chaîne $s = a_{1} b_{2} a_{3} d_{4} a_{5} b_{6} a_{7}$, $\
 
 \subsection{Contexte}
 
+Pour le calcul de la complexité, il faut noter que $|\mathcal{F}| \leq |\mathcal{L}_{\mathcal{C}}| \leq |\mathcal{L}|$.
+
+\begin{enumerate}
+	\item Efficient Text Fingerprinting via Parikh Mapping (2003) \newline
+$\rightarrow \mathcal{O}(n|\Sigma|$ $log$ $n$ $log$ $|\Sigma|)$
+	\item New Algorithms for Text Fingerprinting (2006) \newline
+$\rightarrow \mathcal{O}(n + |\mathcal{L}|$ $log$ $|\Sigma|)$
+	\item Faster Text Fingerprinting (2008) \newline
+$\rightarrow \mathcal{O}((n + |\mathcal{L}_{\mathcal{C}})|$ $log$ $|\Sigma|)$
+	\item Various Improvements to Text Fingerprinting (2013) \newline
+$\rightarrow \mathcal{O}(n + |\mathcal{L}|)$ (Approximatif - \emph{Monte-Carlo})
+\end{enumerate}
+
 \subsection{Apports de l'article}
+
+Dans les approches antérieurs, les \emph{fingerprints} dans une liste, ce qui entraînait des redondances dans les calculs. Ici, les \emph{fingerprints} sont organisés dasn un arbre, et on ne retrouve pas cette redondance.
 
 \subsection{Vue d'ensemble}
 	
@@ -71,23 +107,64 @@ Par exemple, pour la chaîne $s = a_{1} b_{2} a_{3} d_{4} a_{5} b_{6} a_{7}$, $\
 
 \section{\textit{Participation Tree}}
 
-\subsection{Principes}
+\begin{enumerate}
+	\item On le note $PT$
+	\item Il est construit à partir de l'arbre des suffixes (noté $ST$) de $s$
+	\item Il contient l'ensemble des \emph{fingerprints} $f$ de $\mathcal{F}$
+\end{enumerate}
 
 \subsection{Construction de l'arbre}
 
+Exemple de construction de l'arbre pour la chaîne $ataltatlt\#$ :
+
 \subsubsection{Étape 1}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=80mm]{./slides/img/construction-0.png}
+\caption{État initial : l'arbre des suffixes}
+\label{overflow}
+\end{figure}
 
 \subsubsection{Étape 2}
 
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=80mm]{./slides/img/construction-1.png}
+\caption{On réduit tous les caractères à partir de la seconde occurrence du premier caractère du chemin à $\varepsilon$}
+\label{overflow}
+\end{figure}
+
 \subsubsection{Étape 3}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=80mm]{./slides/img/construction-2.png}
+\caption{De la racine au dernier caractère avant $\varepsilon$, on ne garde que la première occurrence de chaque caractère.}
+\label{overflow}
+\end{figure}
 
 \subsubsection{Étape 4}
 
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=80mm]{./slides/img/construction-3.png}
+\caption{On remplace le dernier caractère de chaque chemin de la racine à une feuille par $\varepsilon$}
+\label{overflow}
+\end{figure}
+
 \subsubsection{Étape 5}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=80mm]{./slides/img/construction-45.png}
+\caption{On déploie l'arbre et on supprime les branches vides}
+\label{overflow}
+\end{figure}
 
 \subsection{Théorème}
 
-\subsection{Du \textit{Suffix} Tree au \textit{Participation Tree}}
+\subsection{Du \emph{Suffix} Tree au \emph{Participation Tree}}
 
 \subsubsection{Idées}
 
@@ -97,13 +174,13 @@ Par exemple, pour la chaîne $s = a_{1} b_{2} a_{3} d_{4} a_{5} b_{6} a_{7}$, $\
 
 \subsubsection{Astuces algorithmiques}
 
-\section{Nommage des \textit{fingerprints}}
+\section{Nommage des \emph{fingerprints}}
 
-\subsection{Pourquoi donner un nom aux \textit{fingerprints} ?}
+\subsection{Pourquoi donner un nom aux \emph{fingerprints} ?}
 
 \subsection{Nommage hiérarchique}
 
-\subsection{Utiliser les deltas de participation entre \textit{fingerprints}}
+\subsection{Utiliser les deltas de participation entre \emph{fingerprints}}
 
 \subsection{Nommage d'une liste de listes de participations}
 
