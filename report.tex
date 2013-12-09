@@ -1,0 +1,100 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{caption}
+
+\graphicspath{{./slides/img/}}
+\DeclareGraphicsExtensions{.png, .jpeg, .jpg, .svg}
+
+\lstset{showspaces=false}
+\lstset{showtabs=false}
+\lstset{extendedchars=true}
+\lstset{columns=flexible}
+\lstset{keepspaces=true}
+\lstset{numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt}
+
+\title{Faster Text Fingerprinting}
+\author{Hugo \textsc{Mougard} et Soufian \textsc{Salim}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Introduction}
+
+\subsection{Qu'est ce qu'un \textit{fingerprint} ?}
+
+\subsection{Applications possibles}
+
+\subsection{Problèmes soulevés}
+
+\subsection{Portée de l'article}
+
+\subsection{Avant de commencer}
+
+\subsubsection{Localisations maximales}
+
+\subsubsection{Copies et classes d'équivalence}
+
+\subsection{Contexte}
+
+\subsection{Apports de l'article}
+
+\subsection{Vue d'ensemble}
+
+\section{\textit{Participation Tree}}
+
+\subsection{Principes}
+
+\subsection{Construction de l'arbre}
+
+\subsubsection{Étape 1}
+
+\subsubsection{Étape 2}
+
+\subsubsection{Étape 3}
+
+\subsubsection{Étape 4}
+
+\subsubsection{Étape 5}
+
+\subsection{Théorème}
+
+\subsection{Du \textit{Suffix} Tree au \textit{Participation Tree}}
+
+\subsubsection{Idées}
+
+\subsubsection{Algorithme}
+
+\subsubsection{Calcul de la participation de l'arète}
+
+\subsubsection{Astuces algorithmiques}
+
+\section{Nommage des \textit{fingerprints}}
+
+\subsection{Pourquoi donner un nom aux \textit{fingerprints} ?}
+
+\subsection{Nommage hiérarchique}
+
+\subsection{Utiliser les deltas de participation entre \textit{fingerprints}}
+
+\subsection{Nommage d'une liste de listes de participations}
+
+\subsection{Nommage sur l'arbre}
+
+\section{Conclusion}
+
+\subsection{Solutions aux problèmes soulevés en introduction}
+
+\subsection{Calcul de $\mathcal{F}$}
+
+\end{document}
