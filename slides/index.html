@@ -323,6 +323,15 @@
           </section>
 
           <section>
+            <h3>Pourquoi donner des noms aux fingerprints ?</h3>
+	    <ul>
+	      <li>Maintenir un treillis de fingerprints est couteux</li>
+	      <li>Il faut pouvoir répondre aux différentes questions
+		présentées en introduction rapidement</li>
+	    </ul>
+          </section>
+
+          <section>
             <h3>Nommage d'une fingerprint</h3>
 	    <h4>Nommage hierarchique</h4>
 	    <p>Nom de la fingerprint $\{a,t,l\}$ sur l'alphabet $(␣, a,
@@ -370,11 +379,304 @@
           </section>
 
           <section>
-            <h3>Nommage basique (2003)</h3>
+            <h3>Nommer plusieurs fingerprints à la fois (1/4)</h3>
+	    <h4>Utiliser les changements entre fingerprints</h4>
+	    <p>Tableau initial :</p>
+	    <table class="table table-condensed table-bordered table-centered">
+	      <tr>
+		<td colspan="8">␣</td>
+	      </tr>
+	      <tr>
+		<td colspan="4">␣</td>
+		<td colspan="4">␣</td>
+	      </tr>
+	      <tr>
+		<td colspan="2">␣</td>
+		<td colspan="2">␣</td>
+		<td colspan="2">␣</td>
+		<td colspan="2">␣</td>
+	      </tr>
+	      <tr>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+	      </tr>
+	    </table>
+	    <p>Après le changement $(a, 1)$ :</p>
+	    <table class="table table-condensed table-bordered table-centered">
+	      <tr>
+		<td colspan="8">␣</td>
+	      </tr>
+	      <tr>
+		<td colspan="4">␣</td>
+		<td colspan="4">␣</td>
+	      </tr>
+	      <tr>
+		<td colspan="2">␣</td>
+		<td colspan="2">␣</td>
+		<td colspan="2">␣</td>
+		<td colspan="2">␣</td>
+	      </tr>
+	      <tr>
+		<td>0</td>
+		<td>1</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+	      </tr>
+	    </table>
           </section>
 
           <section>
-            <h3>Nommage par changements</h3>
+            <h3>Nommer plusieurs fingerprints à la fois (2/4)</h3>
+	    <h4>Utiliser les changements entre fingerprints</h4>
+	    <p>Après $(l, 1)$ :</p>
+	    <table class="table table-condensed table-bordered table-centered">
+	      <tr>
+		<td colspan="8">␣</td>
+	      </tr>
+	      <tr>
+		<td colspan="4">␣</td>
+		<td colspan="4">␣</td>
+	      </tr>
+	      <tr>
+		<td colspan="2">␣</td>
+		<td colspan="2">␣</td>
+		<td colspan="2">␣</td>
+		<td colspan="2">␣</td>
+	      </tr>
+	      <tr>
+		<td>0</td>
+		<td>1</td>
+		<td>0</td>
+		<td>1</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+	      </tr>
+	    </table>
+	    <p>Après $(t, 1)$ :</p>
+	    <table class="table table-condensed table-bordered table-centered">
+	      <tr>
+		<td colspan="8">␣</td>
+	      </tr>
+	      <tr>
+		<td colspan="4">␣</td>
+		<td colspan="4">␣</td>
+	      </tr>
+	      <tr>
+		<td colspan="2">␣</td>
+		<td colspan="2">␣</td>
+		<td colspan="2">␣</td>
+		<td colspan="2">␣</td>
+	      </tr>
+	      <tr>
+		<td>0</td>
+		<td>1</td>
+		<td>0</td>
+		<td>1</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>1</td>
+	      </tr>
+	    </table>
+          </section>
+
+          <section>
+            <h3>Nommer plusieurs fingerprints à la fois (3/4)</h3>
+	    <h4>Utiliser les changements entre fingerprints</h4>
+	    
+	    <p>On initialise maintenant le deuxième niveau :</p>
+	    <table class="table table-condensed table-bordered table-centered">
+	      <tr>
+		<td colspan="8">␣</td>
+	      </tr>
+	      <tr>
+		<td colspan="4">␣</td>
+		<td colspan="4">␣</td>
+	      </tr>
+	      <tr>
+		<td colspan="2">(0, 0)</td>
+		<td colspan="2">(0, 0)</td>
+		<td colspan="2">(0, 0)</td>
+		<td colspan="2">(0, 0)</td>
+	      </tr>
+	      <tr>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+	      </tr>
+	    </table>
+          </section>
+
+          <section>
+            <h3>Nommer plusieurs fingerprints à la fois (4/4)</h3>
+	    <h4>Utiliser les changements entre fingerprints</h4>
+	    <p>Puis pour chaque changement effectué au premier niveau,
+	    on modifie le deuxième niveau :</p>
+	    <table class="table table-condensed table-bordered table-centered">
+	      <tr>
+		<td colspan="8">␣</td>
+	      </tr>
+	      <tr>
+		<td colspan="4">␣</td>
+		<td colspan="4">␣</td>
+	      </tr>
+	      <tr>
+		<td colspan="2">(0, 1)</td>
+		<td colspan="2">(0, 0)</td>
+		<td colspan="2">(0, 0)</td>
+		<td colspan="2">(0, 0)</td>
+	      </tr>
+	      <tr>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+	      </tr>
+	    </table>
+	    <p>Puis</p>
+	    	    <table class="table table-condensed table-bordered table-centered">
+	      <tr>
+		<td colspan="8">␣</td>
+	      </tr>
+	      <tr>
+		<td colspan="4">␣</td>
+		<td colspan="4">␣</td>
+	      </tr>
+	      <tr>
+		<td colspan="2">(0, 1)</td>
+		<td colspan="2">(0, 1)</td>
+		<td colspan="2">(0, 0)</td>
+		<td colspan="2">(0, 0)</td>
+	      </tr>
+	      <tr>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+	      </tr>
+	    </table>
+          </section>
+
+          <section>
+            <h3>Nommer plusieurs fingerprints à la fois (4/4)</h3>
+	    <h4>Utiliser les changements entre fingerprints</h4>
+	    <p>Puis</p>
+	    <table class="table table-condensed table-bordered table-centered">
+	      <tr>
+		<td colspan="8">␣</td>
+	      </tr>
+	      <tr>
+		<td colspan="4">␣</td>
+		<td colspan="4">␣</td>
+	      </tr>
+	      <tr>
+		<td colspan="2">(0, 1)</td>
+		<td colspan="2">(0, 1)</td>
+		<td colspan="2">(0, 0)</td>
+		<td colspan="2">(0, 1)</td>
+	      </tr>
+	      <tr>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+	      </tr>
+	    </table>
+	    <p>On trie ensuite les pairs distinctes obtenues : (0, 0) ≤
+	      (0, 1).</p>
+	    <p>Puis on donne un nouveau nom à chaque pair :</p>
+	    <ul>
+	      <li>(0, 0) → <b>2</b></li>
+	      <li>(0, 1) → <b>3</b></li>
+	    </ul>
+          </section>
+
+          <section>
+            <h3>Nommer plusieurs fingerprints à la fois (4/4)</h3>
+	    <h4>Utiliser les changements entre fingerprints</h4>
+	    <p>On obtient alors</p>
+	    <table class="table table-condensed table-bordered table-centered">
+	      <tr>
+		<td colspan="8">␣</td>
+	      </tr>
+	      <tr>
+		<td colspan="4">␣</td>
+		<td colspan="4">␣</td>
+	      </tr>
+	      <tr>
+		<td colspan="2">3</td>
+		<td colspan="2">3</td>
+		<td colspan="2">2</td>
+		<td colspan="2">3</td>
+	      </tr>
+	      <tr>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+	      </tr>
+	    </table>
+	    <p>On peut maintenant initialiser le 3ᵉ niveau :</p>
+	    <table class="table table-condensed table-bordered table-centered">
+	      <tr>
+		<td colspan="8">␣</td>
+	      </tr>
+	      <tr>
+		<td colspan="4">(2, 2)</td>
+		<td colspan="4">(2, 2)</td>
+	      </tr>
+	      <tr>
+		<td colspan="2">␣</td>
+		<td colspan="2">␣</td>
+		<td colspan="2">␣</td>
+		<td colspan="2">␣</td>
+	      </tr>
+	      <tr>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+		<td>␣</td>
+	      </tr>
+	    </table>
+	    <p>Et continuer ainsi jusqu'à avoir parcouru tous les
+	      niveaux.</p>
           </section>
 
           <section>
