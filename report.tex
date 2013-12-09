@@ -15,7 +15,7 @@
 \DeclareGraphicsExtensions{.png, .jpeg, .jpg, .svg}
 
 \title{Faster Text Fingerprinting}
-\author{Hugo \textsc{Mougard} et Soufian \textsc{Salim}}
+\author{Hugo \textsc{Mougard} \and Soufian \textsc{Salim}}
 \date{\today}
 
 \begin{document}
@@ -96,7 +96,11 @@ $\rightarrow \mathcal{O}(n + |\mathcal{L}|)$ (Approximatif - \emph{Monte-Carlo})
 
 \subsection{Apports de l'article}
 
-Dans les approches antérieures, les \emph{fingerprints} dans une liste, ce qui entraînait des redondances dans les calculs. Ici, les \emph{fingerprints} sont organisés dans un arbre, et on ne retrouve pas cette redondance.
+Dans les approches antérieures, les \emph{fingerprints} étaient
+calculés par des méthodes non optimisées du point de vue de la
+redondance~: certains fingerprints étaient considérés plusieurs
+fois. L'article pallie ce problème en modèlisant les fingerprints sous
+forme d'arbre.
 
 \subsection{Vue d'ensemble}
 	
