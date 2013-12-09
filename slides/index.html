@@ -54,16 +54,114 @@
           </section>
 
           <section>
-            <h3>Calculer $\mathcal{F}$</h3>
+            <h3>Calculer $\mathcal{F}$ : état de l'art</h3>
+
+            <style type="text/css">
+              .table td {
+                border-top: 1px solid black;
+                padding: 10px;
+              }
+            </style>
+
+            <br>
+
+            <small>
+              <table class="table">
+                <thead>
+                  <th>Solution</th>
+                  <th>Espace (bits)</th>
+                  <th>Temps</th>
+                </thead>
+                <tr>
+                  <td>Various Impr. to T. F. (Monte-Carlo)</td>
+                  <td>$\mathcal{O}((n + |\mathcal{F}|)$ $log$ $n)$</td>
+                  <td>$\mathcal{O}(n + |\mathcal{L}|)$</td>
+                </tr>
+                <tr>
+                  <td>Faster T. F.</td>
+                  <td>$\mathcal{O}((n + |\mathcal{L}_{\mathcal{C}}| + |\mathcal{F}|$ $log$ $|\Sigma|)$ $log$ $n)$</td>
+                  <td>$\mathcal{O}(n + |\mathcal{L}_{\mathcal{C}}|$ $log$ $|\Sigma|)$</td>
+                </tr>
+                <tr>
+                  <td>New Algorithms for T. F.</td>
+                  <td>$\mathcal{O}((n + |\mathcal{L}|)$ $log$ $n)$</td>
+                  <td>$\mathcal{O}(n + |\mathcal{L}|$ $log$ $|\Sigma|)$</td>
+                </tr>
+                <tr>
+                  <td>Efficient T. F. via Parikh Mapping</td>
+                  <td>$\mathcal{O}(n|\Sigma|log$ $n$ $log$ $|\Sigma|)$</td>
+                  <td></td>
+                </tr>
+              </table>
+            </small>
           </section>
 
+          <section>
+            <h3>Locations maximales</h3>
+
+            <ul>
+              <li>On note $\mathcal{C}$ un ensemble de lettres de $\Sigma$. Une location maximale de $\mathcal{C}$ dans $s$ est un intervalle $[i,j]$ tel que :<br>
+                <br>
+                <ul>
+                  <li>$\mathcal{C}_{s}(i,j) = \mathcal{C}$</li>
+                  <li>Si $i > 1$, $s_{i-1} \notin$ $\mathcal{C}_{s}(i,j)$</li>
+                  <li>Si $j < n$, $s_{j+1} \notin$ $\mathcal{C}_{s}(i,j)$</li>
+                </ul><br>
+              </li>
+              <li>On note $\mathcal{L}$ l'ensemble des locations maximales de tous les fingerprints de $\mathcal{F}$</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Exemple</h3>
+            <br>
+            $s = a_{1} b_{2} c_{3} a_{4} a_{5} d_{6} d_{7} b_{8}$<br>
+            <br>
+            $\mathcal{C} = abc$<br>
+            <br>
+            Locations maximales : {$\langle1,5\rangle$}
+          </section>
+
+          <section>
+            <h3>Copies</h3>
+
+            <br>
+
+            <ul>
+              <li>Deux locations maximales $\langle i,j \rangle$ et $\langle k,l \rangle$ de $s$ sont des copies si $s_{i}..s_{j} = s_{k}..s_{l}$</li>
+              <li>On note $\mathcal{L}_{\mathcal{C}}$ l'ensemble des classes d'équivalence</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Exemple</h3>
+            <br>
+            $s = a_{1} b_{2} a_{3} d_{4} a_{5} b_{6} a_{7}$<br>
+            <br>
+            $\langle1,3\rangle$ et $\langle5,7\rangle$ sont des copies
+          </section>
+
+
+<!--
+
+*** TODO état de l'art sur le calcul de F
+    (inliner les defs nécessaires)
+    (complexités)
+*** TODO méthode introduite dans l'article (intuition méthodes précendentes vs cet article)
+    (par opposition au tableau + liste changements)
+    (ne pas recalculer les parties redondantes des fp)
+*** TODO vue d'ensemble de la méthode
+    - construire PT
+    - nommer PT
+    - …
+    - profit -->
           <section>
             <h3>Vue d'ensemble de la méthode</h3>
 
           	<ul>
 			  <li>Construire l'arbre des suffixes de $s$</li>
 			  <li>À partir de l'arbre des suffixes, construire un arbre des participations</li>
-			  <li>À partir de l'arbre des participations, nommer tous les fingerprints de $s$</li>
+			  <li>À partir de l'arbre des participations, nommer et retourner tous les fingerprints de $s$</li>
           	</ul>
           </section>
         </section>
@@ -73,15 +171,25 @@
             <h1>Participation Tree</h1>
           </section>
           <section>
-            <h3>participation tree</h3>
+            <h3>Principes</h3>
+
+            <ul>
+            	<li>Noté $PT$</li>
+            	<li>Construit à partir de l'arbre des suffixes de $s$</li>
+            	<li>Contient l'ensemble des fingerprints $f$ de $\mathcal{F}$</li>
+            </ul>
           </section>
           
           <section>
-            <h3>Démo du PT</h3>
+            <h3>Construction de l'arbre</h3>
           </section>
           
           <section>
-            <h3>Le PT contient bien toutes les pos max (théorème 1)</h3>
+            <h3>Théorème</h3>
+
+            $\Phi$ étant définie comme une fonction retournant l'ensemble des locations maximales correspondant à un chemin $z$ de $PT$,<br>
+            <br>
+            <strong>toutes les locations maximales sont dans l'image $\Phi(z)$ d'un chemin $z$ dans $PT(s = s_{1}..s_{n})$, et la taille de $PT(s)$ est $\mathcal{O}(|\mathcal{L}_{\mathcal{C}}|)$</strong>
           </section>
           
           <section>
