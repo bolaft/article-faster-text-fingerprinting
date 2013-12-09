@@ -16,6 +16,8 @@
 
     <link rel="stylesheet" href="css/reveal.min.css">
     <link rel="stylesheet" href="css/theme/beige.css" id="theme">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom.css">
 
     <!-- For syntax highlighting -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
@@ -270,7 +272,7 @@
 	    <pre><code data-trim>
 		Construire_PT(ST)
   1.  Calculer chaque première occurrence depuis s₁
-  2.  Trouver l'occurrence suivante de s₁
+  2.  Trouver la prochaine occurrence de s₁
   3.  Pour i de 1 à n faire :
   4.      courant ← Feuille i dans ST
   5.      Tant que courant n'est pas marqué et n'est pas la racine :
@@ -279,8 +281,9 @@
   8.          Marquer courant
   9.          courant ← précédent
   10.         Calculer chaque première occurrence depuis sᵢ₊₁
-  11.     Fin du tant que
-  12. Fin du pour
+  11.         Calculer la prochaine occurrence de sᵢ₊₁
+  12.     Fin du tant que
+  13. Fin du pour
 	    </code></pre>
           </section>
           <section>
@@ -316,11 +319,54 @@
         
         <section>
           <section data-state="sunset">
-            <h1>Nommage des <span>fingerprints</span></h1>
+            <h1>Nommage des fingerprints</h1>
           </section>
 
           <section>
             <h3>Nommage d'une fingerprint</h3>
+	    <h4>Nommage hierarchique</h4>
+	    <p>Nom de la fingerprint $\{a,t,l\}$ sur l'alphabet $(␣, a,
+	      e, l, m, r, s, t)$</p>
+	    <table class="table table-bordered table-centered">
+	      <tr>
+		<td>Niveau 4</td>
+		<td colspan="8">6</td>
+	      </tr>
+	      <tr>
+		<td>Niveau 3</td>
+		<td colspan="4" class="active">4</td>
+		<td colspan="4" class="danger">5</td>
+	      </tr>
+	      <tr>
+		<td>Niveau 2</td>
+		<td colspan="2" class="success">2</td>
+		<td colspan="2" class="success">2</td>
+		<td colspan="2" class="warning">3</td>
+		<td colspan="2" class="success">2</td>
+	      </tr>
+	      <tr>
+		<td>Niveau 1</td>
+		<td class="success">0</td>
+		<td class="success">1</td>
+		<td class="success">0</td>
+		<td class="success">1</td>
+		<td class="warning">0</td>
+		<td class="warning">0</td>
+		<td class="success">0</td>
+		<td class="success">1</td>
+	      </tr>
+	      <tr>
+		<td>Caractère</td>
+		<td>␣</td>
+		<td>a</td>
+		<td>e</td>
+		<td>l</td>
+		<td>m</td>
+		<td>r</td>
+		<td>s</td>
+		<td>t</td>
+	      </tr>
+	    </table>
           </section>
 
           <section>
