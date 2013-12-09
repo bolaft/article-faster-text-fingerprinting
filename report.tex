@@ -195,15 +195,37 @@ $\rightarrow$ $\mathcal{O}(n \times log |\Sigma| + |\mathcal{L}_\mathcal{c}|)$ e
 \section{Nommage des \emph{fingerprints}}
 
 \paragraph{Pourquoi donner un nom aux \emph{fingerprints} ?} Pour
-rendre la gestion des fingerprints plus aisée \cite{amir, karp}. Par gestio nous entendons
+rendre la gestion des fingerprints plus aisée \cite{amir}. Par
+gestion nous entendons la conservation des fingerprints après leur
+calcul et la requête de l'ensemble obtenu pour répondre aux différents
+problèmes soulevés dans l'introduction.
 
-\subsection{Nommage hiérarchique}
+\paragraph{Nommage hiérarchique} Le nommage d'un fingerprint est basé
+sur la méthode adaptée de \cite{karp} par \cite{amir}. Il consiste en
+la confection d'un tableau à $\log_2 |\Sigma|$ lignes rempli
+récursivement pour dériver un nom de l'absence ou de la présence des
+caractères de l'alphabet du fingerprint considéré.
 
-\subsection{Utiliser les deltas de participation entre \emph{fingerprints}}
+\paragraph{Utiliser les changements entre \emph{fingerprints} proches}
+Pour nommer plusieurs fingerprints proches, l'article reprend la
+méthode présentée par \cite{tsur}. Cette méthode dérive une liste de
+changements en même temps qu'un tableau de fingerprint. La liste de
+changement est la liste des noms des fingerprint au niveau le plus
+haut du tableau.
 
-\subsection{Nommage d'une liste de listes de participations}
+\paragraph{Nommage d'une liste de listes de changements entre
+  fingerprints proches} L'article reprend la méthode de nommage d'une
+liste de fingerprints proches et la parallèlise~: le seul point
+délicat est qu'il faut faire attention durant la phase de nommage des
+nouvelles paires à bien synchroniser les algorithmes pour qu'ils
+trient et nomment les paires globalement.
 
-\subsection{Nommage sur l'arbre}
+\paragraph{Nommage sur l'arbre} On peut dériver une liste de listes de
+changements entre fingerprint proches trivialement depuis l'arbre des
+participations. Il suffit pour cela de suivre chaque branche. Une fois
+cette liste dérivée, la méthode de \cite{tsur} parallélisée permet de
+nommer toutes les fingerprints de l'arbre de participation, et donc
+toutes les fingerprints.
 
 \section{Conclusion}
 
