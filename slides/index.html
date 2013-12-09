@@ -38,6 +38,11 @@
 
       <!-- Any section element inside of this container is displayed as a slide -->
       <div class="slides">
+        <section data-state="alert">
+          <h1>Faster Text Fingerprinting</h1>
+          <strong>Roman Kolpakov, Mathieu Raffinot</strong><br>
+          2008
+        </section>
         <section>
           <section data-state="soothe">
             <h1>Introduction</h1>
@@ -165,22 +170,16 @@
 <section>
   <h3>Calculer $\mathcal{F}$ : état de l'art</h3>
 
-  <style type="text/css">
-    .table td {
-    border-top: 1px solid black;
-    padding: 10px;
-    }
-  </style>
 
   <br>
 
   <small>
-    <table class="table">
-      <thead>
-        <th>Solution</th>
-        <th>Espace (bits)</th>
-        <th>Temps</th>
-      </thead>
+    <table class="table table-bordered table-centered">
+      <tr>
+        <td><strong>Solution</strong></td>
+        <td><strong>Espace (bits)</strong></td>
+        <td><strong>Temps</strong></td>
+      </tr>
       <tr>
         <td>Various Impr. to T. F. (Monte-Carlo)</td>
         <td>$\mathcal{O}((n + |\mathcal{F}|)$ $log$ $n)$</td>
