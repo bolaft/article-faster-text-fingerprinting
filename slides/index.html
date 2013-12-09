@@ -432,315 +432,239 @@
   </section>
 
   <section>
-    <h3>Nommer plusieurs fingerprints à la fois (1/7)</h3>
-    <h4>Utiliser les deltas de participation entre fingerprints</h4>
-    <p>L'idée est de trouver une manière efficace de nommer
-      des fingerprints que l'on peut obtenir en ajoutant
-      successivement un élément :</p>
-    $$
-    (\{a\}, \{a, t\}, \{a, t, l\})
-    $$
-    
-  </section>
-  <section>
-    <h3>Nommer plusieurs fingerprints à la fois (2/7)</h3>
-    <h4>Utiliser les deltas de participation entre fingerprints</h4>
-    <p>Tableau initial :</p>
-    <table class="table table-condensed table-bordered table-centered">
-      <tr>
-        <td colspan="8">␣</td>
-      </tr>
-      <tr>
-        <td colspan="4">␣</td>
-        <td colspan="4">␣</td>
-      </tr>
-      <tr>
-        <td colspan="2">␣</td>
-        <td colspan="2">␣</td>
-        <td colspan="2">␣</td>
-        <td colspan="2">␣</td>
-      </tr>
-      <tr>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-      </tr>
-    </table>
-    <p>Après le changement $(a, 1)$ :</p>
-    <table class="table table-condensed table-bordered table-centered">
-      <tr>
-        <td colspan="8">␣</td>
-      </tr>
-      <tr>
-        <td colspan="4">␣</td>
-        <td colspan="4">␣</td>
-      </tr>
-      <tr>
-        <td colspan="2">␣</td>
-        <td colspan="2">␣</td>
-        <td colspan="2">␣</td>
-        <td colspan="2">␣</td>
-      </tr>
-      <tr>
-        <td>0</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-      </tr>
-    </table>
+    <h3>Nommer plusieurs fingerprints à la fois (1/10)</h3>
+    <h4>Utiliser les deltas entre fingerprints proches</h4>
+    <p>L'idée est de trouver une manière efficace de nommer des
+      fingerprints que l'on peut obtenir en ajoutant successivement un
+      élément :</p> $$ (\{a\}, \{a, t\}, \{a, t, l\}) $$
   </section>
 
   <section>
-    <h3>Nommer plusieurs fingerprints à la fois (3/7)</h3>
-    <h4>Utiliser les deltas de participation entre fingerprints</h4>
-    <p>Après $(l, 1)$ :</p>
-    <table class="table table-condensed table-bordered table-centered">
-      <tr>
-        <td colspan="8">␣</td>
-      </tr>
-      <tr>
-        <td colspan="4">␣</td>
-        <td colspan="4">␣</td>
-      </tr>
-      <tr>
-        <td colspan="2">␣</td>
-        <td colspan="2">␣</td>
-        <td colspan="2">␣</td>
-        <td colspan="2">␣</td>
-      </tr>
-      <tr>
-        <td>0</td>
-        <td>1</td>
-        <td>0</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-      </tr>
-    </table>
-    <p>Après $(t, 1)$ :</p>
-    <table class="table table-condensed table-bordered table-centered">
-      <tr>
-        <td colspan="8">␣</td>
-      </tr>
-      <tr>
-        <td colspan="4">␣</td>
-        <td colspan="4">␣</td>
-      </tr>
-      <tr>
-        <td colspan="2">␣</td>
-        <td colspan="2">␣</td>
-        <td colspan="2">␣</td>
-        <td colspan="2">␣</td>
-      </tr>
-      <tr>
-        <td>0</td>
-        <td>1</td>
-        <td>0</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-      </tr>
-    </table>
+    <h3>Nommer plusieurs fingerprints à la fois (2/10)</h3>
+    <h4>Méthode</h4>
+    <p>On utilise la méthode simple mais on maintient en parallèle une
+      liste de changements repercutée à chaque niveau du tableau.</p>
   </section>
 
   <section>
-    <h3>Nommer plusieurs fingerprints à la fois (4/7)</h3>
-    <h4>Utiliser les deltas de participation entre fingerprints</h4>
-    
-    <p>On initialise maintenant le deuxième niveau :</p>
+    <h3>Nommer plusieurs fingerprints à la fois (3/10)</h3>
+    <h4>Niveau 1</h4>
+    <p>On initialise le tableau de fingerprint :</p>
+    <br>
     <table class="table table-condensed table-bordered table-centered">
       <tr>
-        <td colspan="8">␣</td>
-      </tr>
-      <tr>
-        <td colspan="4">␣</td>
-        <td colspan="4">␣</td>
-      </tr>
-      <tr>
-        <td colspan="2">(0, 0)</td>
-        <td colspan="2">(0, 0)</td>
-        <td colspan="2">(0, 0)</td>
-        <td colspan="2">(0, 0)</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
       </tr>
       <tr>
         <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
+        <td>a</td>
+        <td>e</td>
+        <td>l</td>
+        <td>m</td>
+        <td>r</td>
+        <td>s</td>
+        <td>t</td>
       </tr>
     </table>
-  </section>
-
-  <section>
-    <h3>Nommer plusieurs fingerprints à la fois (5/7)</h3>
-    <h4>Utiliser les deltas de participation entre fingerprints</h4>
-    <p>Puis pour chaque changement effectué au premier niveau,
-      on modifie le deuxième niveau :</p>
-    <table class="table table-condensed table-bordered table-centered">
-      <tr>
-        <td colspan="8">␣</td>
-      </tr>
-      <tr>
-        <td colspan="4">␣</td>
-        <td colspan="4">␣</td>
-      </tr>
-      <tr>
-        <td colspan="2">(0, 1)</td>
-        <td colspan="2">(0, 0)</td>
-        <td colspan="2">(0, 0)</td>
-        <td colspan="2">(0, 0)</td>
-      </tr>
-      <tr>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-      </tr>
-    </table>
-    <p>Puis</p>
-    <table class="table table-condensed table-bordered table-centered">
-      <tr>
-        <td colspan="8">␣</td>
-      </tr>
-      <tr>
-        <td colspan="4">␣</td>
-        <td colspan="4">␣</td>
-      </tr>
-      <tr>
-        <td colspan="2">(0, 1)</td>
-        <td colspan="2">(0, 1)</td>
-        <td colspan="2">(0, 0)</td>
-        <td colspan="2">(0, 0)</td>
-      </tr>
-      <tr>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-      </tr>
-    </table>
-  </section>
-
-  <section>
-    <h3>Nommer plusieurs fingerprints à la fois (6/7)</h3>
-    <h4>Utiliser les deltas de participation entre fingerprints</h4>
-    <p>Puis</p>
-    <table class="table table-condensed table-bordered table-centered">
-      <tr>
-        <td colspan="8">␣</td>
-      </tr>
-      <tr>
-        <td colspan="4">␣</td>
-        <td colspan="4">␣</td>
-      </tr>
-      <tr>
-        <td colspan="2">(0, 1)</td>
-        <td colspan="2">(0, 1)</td>
-        <td colspan="2">(0, 0)</td>
-        <td colspan="2">(0, 1)</td>
-      </tr>
-      <tr>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-      </tr>
-    </table>
-    <p>On trie ensuite les pairs distinctes obtenues : (0, 0) ≤
-      (0, 1).</p>
-    <p>Puis on donne un nouveau nom à chaque pair :</p>
+    <br>
+    <p>Et on garde les changements à effectuer pour que ce tableau
+      soit cohérent pour les fingerprints $\{a\}$, $\{a, t\}$ et $\{a,
+      t, l\}$ :</p>
+    <br>
     <ul>
-      <li>(0, 0) → <b>2</b></li>
-      <li>(0, 1) → <b>3</b></li>
+      <li>$a ← 1$</li>
+      <li>$t ← 1$</li>
+      <li>$l ← 1$</li>
     </ul>
   </section>
 
   <section>
-    <h3>Nommer plusieurs fingerprints à la fois (7/7)</h3>
-    <h4>Utiliser les deltas de participation entre fingerprints</h4>
-    <p>On obtient alors</p>
+    <h3>Nommer plusieurs fingerprints à la fois (4/10)</h3>
+    <h4>Niveau 2</h4>
+    <p>On initialise le tableau de fingerprint à partir de celui du
+      niveau 1 :</p>
+    <br>
     <table class="table table-condensed table-bordered table-centered">
       <tr>
-        <td colspan="8">␣</td>
+        <td>(0, 0)</td>
+        <td>(0, 0)</td>
+        <td>(0, 0)</td>
+        <td>(0, 0)</td>
       </tr>
       <tr>
-        <td colspan="4">␣</td>
-        <td colspan="4">␣</td>
-      </tr>
-      <tr>
-        <td colspan="2">3</td>
-        <td colspan="2">3</td>
-        <td colspan="2">2</td>
-        <td colspan="2">3</td>
-      </tr>
-      <tr>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
+        <td>(␣, a)</td>
+        <td>(e, l)</td>
+        <td>(m, r)</td>
+        <td>(s, t)</td>
       </tr>
     </table>
-    <p>On peut maintenant initialiser le 3ᵉ niveau :</p>
+    <br>
+    <p>Et on garde les changements à effectuer pour que ce tableau
+      soit cohérent avec les changements du niveau 1 :</p>
+    <br>
+    <ul>
+      <li>$(␣, a) ← (0, 1)$</li>
+      <li>$(s, t) ← (0, 1)$</li>
+      <li>$(e, l) ← (0, 1)$</li>
+    </ul>
+  </section>
+
+  <section>
+    <h3>Nommer plusieurs fingerprints à la fois (5/10)</h3>
+    <h4>Niveau 2</h4>
+    <p>On donne maintenant des noms aux pairs du niveau 2, du plus
+      petit au plus grand par ordre lexicographique : $(0, 0) → 2$ et
+      $(0, 1) → 3$. On a alors :</p>
+    <br>
     <table class="table table-condensed table-bordered table-centered">
       <tr>
-        <td colspan="8">␣</td>
+        <td>2</td>
+        <td>2</td>
+        <td>2</td>
+        <td>2</td>
       </tr>
       <tr>
-        <td colspan="4">(2, 2)</td>
-        <td colspan="4">(2, 2)</td>
-      </tr>
-      <tr>
-        <td colspan="2">␣</td>
-        <td colspan="2">␣</td>
-        <td colspan="2">␣</td>
-        <td colspan="2">␣</td>
-      </tr>
-      <tr>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
-        <td>␣</td>
+        <td>(␣, a)</td>
+        <td>(e, l)</td>
+        <td>(m, r)</td>
+        <td>(s, t)</td>
       </tr>
     </table>
-    <p>Et continuer ainsi jusqu'à avoir parcouru tous les
-      niveaux.</p>
+    <br>
+    <p>Et les changements :</p>
+    <br>
+    <ul>
+      <li>$(␣, a) ← 3$</li>
+      <li>$(s, t) ← 3$</li>
+      <li>$(e, l) ← 3$</li>
+    </ul>
+  </section>
+
+  <section>
+    <h3>Nommer plusieurs fingerprints à la fois (6/10)</h3>
+    <h4>Niveau 3</h4>
+    <p>On initialise le tableau de fingerprint à partir de celui du
+      niveau 2 :</p>
+    <br>
+    <table class="table table-condensed table-bordered table-centered">
+      <tr>
+        <td>(2, 2)</td>
+        <td>(2, 2)</td>
+      </tr>
+      <tr>
+        <td>(␣, a, e, l)</td>
+        <td>(m, r, s, t)</td>
+      </tr>
+    </table>
+    <br>
+    <p>Et on garde les changements à effectuer pour que ce tableau
+      soit cohérent avec les changements du niveau 2 :</p>
+    <br>
+    <ul>
+      <li>$(␣, a, e, l) ← (3, 2)$</li>
+      <li>$(␣, a, e, l) ← (3, 3)$</li>
+      <li>$(m, r, s, t) ← (2, 3)$</li>
+    </ul>
+  </section>
+  <section>
+    <h3>Nommer plusieurs fingerprints à la fois (7/10)</h3>
+    <h4>Niveau 3</h4>
+    <p>On donne maintenant des noms aux pairs du niveau 3 : $(2, 2) →
+      4$, $(2, 3) → 5$, $(3, 2) → 6$ et $(3, 3) → 7$. On a alors :</p>
+    <br>
+    <table class="table table-condensed table-bordered table-centered">
+      <tr>
+        <td>4</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <td>(␣, a, e, l)</td>
+        <td>(m, r, s, t)</td>
+      </tr>
+    </table>
+    <br>
+    <p>Et les changements :</p>
+    <br>
+    <ul>
+      <li>$(␣, a, e, l) ← 6$</li>
+      <li>$(␣, a, e, l) ← 7$</li>
+      <li>$(m, r, s, t) ← 5$</li>
+    </ul>
+  </section>
+  <section>
+    <h3>Nommer plusieurs fingerprints à la fois (8/10)</h3>
+    <h4>Niveau 4</h4>
+    <p>On initialise le tableau de fingerprint à partir de celui du
+      niveau 3 :</p>
+    <br>
+    <table class="table table-condensed table-bordered table-centered">
+      <tr>
+        <td>(4, 4)</td>
+      </tr>
+      <tr>
+        <td>(␣, a, e, l, m, r, s, t)</td>
+      </tr>
+    </table>
+    <br>
+    <p>Et on garde les changements à effectuer pour que ce tableau
+      soit cohérent avec les changements du niveau 3 :</p>
+    <br>
+    <ul>
+      <li>$(␣, a, e, l, m, r, s, t) ← (6, 4)$</li>
+      <li>$(␣, a, e, l, m, r, s, t) ← (7, 4)$</li>
+      <li>$(␣, a, e, l, m, r, s, t) ← (7, 5)$</li>
+    </ul>
+  </section>
+  <section>
+    <h3>Nommer plusieurs fingerprints à la fois (9/10)</h3>
+    <h4>Niveau 4</h4>
+    <p>On donne maintenant des noms aux pairs du niveau 4 : $(4, 4) →
+      8$, $(6, 4) → 9$, $(7, 4) → 10$ et $(7, 5) → 11$. On a
+      alors :</p>
+    <br>
+    <table class="table table-condensed table-bordered table-centered">
+      <tr>
+        <td>8</td>
+      </tr>
+      <tr>
+        <td>(␣, a, e, l, m, r, s, t)</td>
+      </tr>
+    </table>
+    <br>
+    <p>Et les changements :</p>
+    <br>
+    <ul>
+      <li>$(␣, a, e, l, m, r, s, t) ← 9$</li>
+      <li>$(␣, a, e, l, m, r, s, t) ← 10$</li>
+      <li>$(␣, a, e, l, m, r, s, t) ← 11$</li>
+    </ul>
+  </section>
+
+  <section>
+    <h3>Nommer plusieurs fingerprints à la fois (10/10)</h3>
+    <h4>Résultat</h4>
+    <p>Les noms des fingerprints sont respectivement 9, 10 et 11 pour
+    $\{a\}$, $\{a, t\}$ et $\{a, t, l\}$.</p>
+    <p>On a de plus les mappings suivants :</p>
+    <ul>
+      <li>$(0, 0) → 2$</li>
+      <li>$(0, 1) → 3$</li>
+      <li>$(2, 2) → 4$</li>
+      <li>$(2, 3) → 5$</li>
+      <li>$(3, 2) → 6$</li>
+      <li>$(3, 3) → 7$</li>
+      <li>$(4, 4) → 8$</li>
+      <li>$(6, 4) → 9$</li>
+      <li>$(7, 4) → 10$</li>
+      <li>$(7, 5) → 11$</li>
+    </ul>
   </section>
 
   <section>
