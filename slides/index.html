@@ -49,14 +49,19 @@
           </section>
 
           <section>
-            <h3>Qu'est ce qu'une fingerprint ?</h3>
-            <p>Pour $s = s_1 .. s_n \in \Sigma^*$, la fingerprint $f$
+            <h3>Qu'est ce qu'un fingerprint ?</h3>
+            <h4>Définition</h4>
+            <p>Pour $s = s_1 .. s_n \in \Sigma^*$, le fingerprint $f$
               sur $[i,j]$ est $\{c | c \in s_i .. s_j\}$.</p>
-            <p>Par exemple, la fingerprint sur $[6,10]$ de
+            <br>
+            <h4>Exemple</h4>
+            <p>Le fingerprint sur $[6,10]$ de
               $« M_1A_2S_3T_4E_5R_6␣_7A_8T_9A_{10}L_{11} »$ est
               $\{␣,A,R,T\}$</p>
-            <p>Le fingerprinting de $s$ consiste à calculer les
-              fingerprints de toutes les sous-chaînes de $s$.</p>
+            <br>
+            <h4>Fingerprinting d'un texte $s$</h4>
+            <p>Calcul des fingerprints de toutes les sous-chaînes de
+              $s$.</p>
           </section>
 
           <section>
@@ -66,6 +71,7 @@
               quand l'on souhaite travailler sur des <strong>ensembles</strong> de
               caractéristiques plutôt que des <strong>séquences</strong> de
               caractéristiques.</p>
+            <br>
             <h4>Intuition TAListe</h4>
             <p>Les fingerprints sont aux ensembles ce que les n-grams
               sont aux séquences.</p>
@@ -85,7 +91,7 @@
             <ol>
               <li>Calculer l'ensemble $\mathcal{F}$ des
                 fingerprints</li>
-              <li>Décider si une fingerprint $\mathcal{f}$ est dans
+              <li>Décider si un fingerprint $\mathcal{f}$ est dans
                 $\mathcal{F}$</li>
               <li>Retrouver les occurrences de $f$ dans $s$</li>
               <li>Calculer le nombre de fingerprints de taille $k$
@@ -368,10 +374,10 @@
   </section>
 
   <section>
-    <h3>Nommage d'une fingerprint</h3>
+    <h3>Nommage d'un fingerprint</h3>
     <h4>Nommage hierarchique</h4>
-    <p>Nom de la fingerprint $\{a,t,l\}$ sur l'alphabet $(␣, a,
-      e, l, m, r, s, t)$</p>
+    <p>Nom du fingerprint $\{a,t,l\}$ sur l'alphabet $(␣, a, e, l, m,
+      r, s, t)$</p>
     <table class="table table-bordered table-centered">
       <tr>
         <td>Niveau 4</td>
@@ -750,8 +756,8 @@
     <ul>
       <li><b>Trouver le nombre de fingerprints :</b> Autant de
         fingerprints qu'il y a de noms</li>
-      <li><b>Décider si une fingerprint est dans $\mathcal{F}$ :</b>
-        Nommer la fingerprint et regarder si le nom est dans
+      <li><b>Décider si un fingerprint est dans $\mathcal{F}$ :</b>
+        Nommer le fingerprint et regarder si le nom est dans
         l'ensemble des noms calculés</li>
       <li>…</li>
     </ul>
