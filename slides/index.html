@@ -28,9 +28,9 @@
     </script>
 
     <!--[if lt IE 9]>
-        <script src="lib/js/html5shiv.js"></script>
-        <![endif]-->
-  </head>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+       </head>
 
   <body>
 
@@ -45,54 +45,54 @@
 
           <section>
             <h3>Qu'est ce qu'une fingerprint ?</h3>
-	    <p>Pour $s = s_1 .. s_n \in \Sigma^*$, la fingerprint $f$
+            <p>Pour $s = s_1 .. s_n \in \Sigma^*$, la fingerprint $f$
               sur $[i,j]$ est $\{c | c \in s_i .. s_j\}$.</p>
-	    <p>Par exemple, la fingerprint sur $[6,10]$ de
-	      $« M_1A_2S_3T_4E_5R_6␣_7A_8T_9A_{10}L_{11} »$ est
-	      $\{␣,A,R,T\}$</p>
-	    <p>Le fingerprinting de $s$ consiste à calculer les
-	      fingerprints de toutes les sous-chaînes de $s$.</p>
+            <p>Par exemple, la fingerprint sur $[6,10]$ de
+              $« M_1A_2S_3T_4E_5R_6␣_7A_8T_9A_{10}L_{11} »$ est
+              $\{␣,A,R,T\}$</p>
+            <p>Le fingerprinting de $s$ consiste à calculer les
+              fingerprints de toutes les sous-chaînes de $s$.</p>
           </section>
 
           <section>
             <h3>Applications possibles (1/2)</h3>
             <h4>De manière générale</h4>
-	    <p>Les fingerprints sont utiles
-	      quand l'on souhaite travailler sur des <strong>ensembles</strong> de
-	      caractéristiques plutôt que des <strong>séquences</strong> de
-	      caractéristiques.</p>
-	    <h4>Intuition TAListe</h4>
-	    <p>Les fingerprints sont aux ensembles ce que les n-grams
-	      sont aux séquences.</p>
+            <p>Les fingerprints sont utiles
+              quand l'on souhaite travailler sur des <strong>ensembles</strong> de
+              caractéristiques plutôt que des <strong>séquences</strong> de
+              caractéristiques.</p>
+            <h4>Intuition TAListe</h4>
+            <p>Les fingerprints sont aux ensembles ce que les n-grams
+              sont aux séquences.</p>
           </section>
 
           <section>
             <h3>Applications possibles (2/2)</h3>
             <h4>En bio-informatique</h4>
-	    <p>Recherche approchée de chaîne de caractères.</p>
+            <p>Recherche approchée de chaîne de caractères.</p>
             <h4>En traitement des langues</h4>
-	    <p>Intéressant pour apprendre une distribution
-	      ensembliste pour un classificateur.</p>
+            <p>Intéressant pour apprendre une distribution
+              ensembliste pour un classificateur.</p>
           </section>
 
           <section>
             <h3>Problèmes associés aux fingerprints</h3>
-	    <ol>
-	      <li>Calculer l'ensemble $\mathcal{F}$ des
-		fingerprints</li>
-	      <li>Décider si une fingerprint $\mathcal{f}$ est dans
-		$\mathcal{F}$</li>
-	      <li>Retrouver les occurrences de $f$ dans $s$</li>
-	      <li>Calculer le nombre de fingerprints de taille $k$
-		dans $s$</li>
-	      <li>…</li>
-	    </ol>
+            <ol>
+              <li>Calculer l'ensemble $\mathcal{F}$ des
+                fingerprints</li>
+              <li>Décider si une fingerprint $\mathcal{f}$ est dans
+                $\mathcal{F}$</li>
+              <li>Retrouver les occurrences de $f$ dans $s$</li>
+              <li>Calculer le nombre de fingerprints de taille $k$
+                dans $s$</li>
+              <li>…</li>
+            </ol>
           </section>
 
           <section>
             <h3>Portée de l'article</h3>
-	    <p>Cet article s'intéresse au problème 1 : calculer
-	      l'ensemble des fingerprints.</p>
+            <p>Cet article s'intéresse au problème 1 : calculer
+              l'ensemble des fingerprints.</p>
           </section>
 
           <section>
@@ -206,13 +206,14 @@
 </section>
 
 <section>
-  <h3>Passage de $|\mathcal{L}|$ à $|\mathcal{L}_{\mathcal{C}}|$ : nouvelle méthode</h3>
-
-  <!--
-      TODO méthode introduite dans l'article (intuition méthodes précendentes vs cet article)
-      (par opposition au tableau + liste changements)
-      (ne pas recalculer les parties redondantes des fp) 
-    -->
+  <h3>Passage de $|\mathcal{L}|$ à $|\mathcal{L}_{\mathcal{C}}|$ :
+    nouvelle méthode</h3>
+  <h4>Approches antérieures</h4>
+  <p>Organisation des fingerprints dans une liste, redondance dans les
+    calculs.</p>
+  <h4>Approche de l'article</h4>
+  <p>Organisation des fingerprints dans un arbre, pas de redondance
+    dans les calculs.</p>
 </section>
 
 <section>
@@ -293,33 +294,33 @@
     <h4>Idées</h4>
     <ul>
       <li>Calculer les participations des branches aux
-	fingerprints les unes après les autres</li>
+        fingerprints les unes après les autres</li>
       <li>Marquer les arêtes calculées pour ne pas les recalculer</li>
       <li>Calculer seulement les deltas des valeurs
-	nécessaires à chaque pas</li>
+        nécessaires à chaque pas</li>
     </ul>
     <img src="img/suffix-tree.svg"> <span style="position:
-						 relative; top: -150px;">→</span> <img src="img/participation-tree.svg">
+                                                 relative; top: -150px;">→</span> <img src="img/participation-tree.svg">
   </section>
 
   <section>
     <h3>Du suffix tree au participation tree (2/4)</h3>
     <h4>Algorithme</h4>
     <pre><code data-trim>
-	Construire_PT(ST)
-	1.  Calculer chaque première occurrence depuis s₁
-	2.  Trouver la prochaine occurrence de s₁
-	3.  Pour i de 1 à n faire :
-	4.      courant ← Feuille i dans ST
-	5.      Tant que courant n'est pas marqué et n'est pas la racine :
-	6.          précédent ← Parent de courant dans ST
-	7.          Calculer la participation de l'arête (précédent, courant)
-	8.          Marquer courant
-	9.          courant ← précédent
-	10.         Calculer chaque première occurrence depuis sᵢ₊₁
-	11.         Calculer la prochaine occurrence de sᵢ₊₁
-	12.     Fin du tant que
-	13. Fin du pour
+        Construire_PT(ST)
+        1.  Calculer chaque première occurrence depuis s₁
+        2.  Trouver la prochaine occurrence de s₁
+        3.  Pour i de 1 à n faire :
+        4.      courant ← Feuille i dans ST
+        5.      Tant que courant n'est pas marqué et n'est pas la racine :
+        6.          précédent ← Parent de courant dans ST
+        7.          Calculer la participation de l'arête (précédent, courant)
+        8.          Marquer courant
+        9.          courant ← précédent
+        10.         Calculer chaque première occurrence depuis sᵢ₊₁
+        11.         Calculer la prochaine occurrence de sᵢ₊₁
+        12.     Fin du tant que
+        13. Fin du pour
     </code></pre>
   </section>
   <section>
@@ -342,10 +343,10 @@
     <h4>Astuces algorithmiques</h4>
     <ul>
       <li>Représentation des « chaque première occurrence »
-	dans un arbre AVL</li>
+        dans un arbre AVL</li>
       <li>Stockage des positions des caractères dans des
-	listes pour pouvoir calculer l'itération suivante
-	depuis l'itération courante en $\mathcal{O}(log |Σ|)$</li>
+        listes pour pouvoir calculer l'itération suivante
+        depuis l'itération courante en $\mathcal{O}(log |Σ|)$</li>
     </ul><br><br><br><br>
     <p>→ $\mathcal{O}(n×log |Σ| + |\mathcal{L}_\mathcal{c}|)$
       en temps</p>
@@ -363,7 +364,7 @@
     <ul>
       <li>Maintenir un treillis de fingerprints est couteux</li>
       <li>Il faut pouvoir répondre aux différentes questions
-	présentées en introduction rapidement</li>
+        présentées en introduction rapidement</li>
     </ul>
   </section>
 
@@ -374,42 +375,42 @@
       e, l, m, r, s, t)$</p>
     <table class="table table-bordered table-centered">
       <tr>
-	<td>Niveau 4</td>
-	<td colspan="8">6</td>
+        <td>Niveau 4</td>
+        <td colspan="8">6</td>
       </tr>
       <tr>
-	<td>Niveau 3</td>
-	<td colspan="4" class="active">4</td>
-	<td colspan="4" class="danger">5</td>
+        <td>Niveau 3</td>
+        <td colspan="4" class="active">4</td>
+        <td colspan="4" class="danger">5</td>
       </tr>
       <tr>
-	<td>Niveau 2</td>
-	<td colspan="2" class="success">2</td>
-	<td colspan="2" class="success">2</td>
-	<td colspan="2" class="warning">3</td>
-	<td colspan="2" class="success">2</td>
+        <td>Niveau 2</td>
+        <td colspan="2" class="success">2</td>
+        <td colspan="2" class="success">2</td>
+        <td colspan="2" class="warning">3</td>
+        <td colspan="2" class="success">2</td>
       </tr>
       <tr>
-	<td>Niveau 1</td>
-	<td class="success">0</td>
-	<td class="success">1</td>
-	<td class="success">0</td>
-	<td class="success">1</td>
-	<td class="warning">0</td>
-	<td class="warning">0</td>
-	<td class="success">0</td>
-	<td class="success">1</td>
+        <td>Niveau 1</td>
+        <td class="success">0</td>
+        <td class="success">1</td>
+        <td class="success">0</td>
+        <td class="success">1</td>
+        <td class="warning">0</td>
+        <td class="warning">0</td>
+        <td class="success">0</td>
+        <td class="success">1</td>
       </tr>
       <tr>
-	<td>Caractère</td>
-	<td>␣</td>
-	<td>a</td>
-	<td>e</td>
-	<td>l</td>
-	<td>m</td>
-	<td>r</td>
-	<td>s</td>
-	<td>t</td>
+        <td>Caractère</td>
+        <td>␣</td>
+        <td>a</td>
+        <td>e</td>
+        <td>l</td>
+        <td>m</td>
+        <td>r</td>
+        <td>s</td>
+        <td>t</td>
       </tr>
     </table>
   </section>
@@ -431,11 +432,11 @@
     <p>Tableau initial :</p>
     <table class="table table-condensed table-bordered table-centered">
       <tr>
-	<td colspan="8">␣</td>
+        <td colspan="8">␣</td>
       </tr>
       <tr>
-	<td colspan="4">␣</td>
-	<td colspan="4">␣</td>
+        <td colspan="4">␣</td>
+        <td colspan="4">␣</td>
       </tr>
       <tr>
         <td colspan="2">␣</td>
