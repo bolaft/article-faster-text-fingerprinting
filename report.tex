@@ -1,6 +1,5 @@
-\documentclass[a4paper,10pt]{article}
+\documentclass[a4paper]{article}
 
-\usepackage{libertine}
 \usepackage[utf8]{inputenc}
 \usepackage[french]{babel}
 \usepackage{amsmath}
@@ -11,13 +10,6 @@
 
 \graphicspath{{./slides/img/}}
 \DeclareGraphicsExtensions{.png, .jpeg, .jpg, .svg}
-
-\lstset{showspaces=false}
-\lstset{showtabs=false}
-\lstset{extendedchars=true}
-\lstset{columns=flexible}
-\lstset{keepspaces=true}
-\lstset{numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt}
 
 \title{Faster Text Fingerprinting}
 \author{Hugo \textsc{Mougard} et Soufian \textsc{Salim}}
@@ -33,6 +25,10 @@
 
 \subsection{Qu'est ce qu'un \textit{fingerprint} ?}
 
+Pour $s = s_{1} .. s_{n}$ un texte sur un alphabet $\Sigma$, un \textit{fingerprint} $f$ est un ensemble des caractères distincts contenus dans l'une de ses sous-chaînes. Le \textit{fingerprinting} consiste à calculer l'ensemble $\mathcal{F}$ de tous les \textit{fingerprints} $f$ de toutes les sous-chaines de $s$.  \newline
+
+Par exemple, pour la chaîne $s = a_{1} b_{2} c_{3} a_{4} a_{5} d_{6} d_{7} b_{8}$, le \textit{fingerprint} de $[3,7]$ est $cad$.
+
 \subsection{Applications possibles}
 
 \subsection{Problèmes soulevés}
@@ -43,13 +39,35 @@
 
 \subsubsection{Localisations maximales}
 
+On note $\mathcal{C}$ un ensemble de lettres de $\Sigma$. Une location maximale de $\mathcal{C}$ dans $s$ est un intervalle $[i,j]$ tel que :
+		
+\begin{itemize}
+	\item $\mathcal{C}_{s}(i,j) = \mathcal{C}$
+	\item Si $i > 1$, $s_{i-1} \notin$ $\mathcal{C}_{s}(i,j)$
+	\item Si $j < n$, $s_{j+1} \notin$ $\mathcal{C}_{s}(i,j)$
+\end{itemize}
+
+On note $\mathcal{L}$ l'ensemble des locations maximales de tous les \textit{fingerprints} de $\mathcal{F}$. \newline
+
+Par exemple, pour la chaîne $s = a_{1} b_{2} c_{3} a_{4} a_{5} d_{6} d_{7} b_{8}$, la seule location maximale de $abc$ est $\langle1,5\rangle$.
+
 \subsubsection{Copies et classes d'équivalence}
+
+Deux locations maximales $\langle i,j \rangle$ et $\langle k,l \rangle$ de $s$ sont des copies si $s_{i}..s_{j} = s_{k}..s_{l}$. On note $\mathcal{L}_{\mathcal{C}}$ l'ensemble des classes d'équivalence. \newline
+
+Par exemple, pour la chaîne $s = a_{1} b_{2} a_{3} d_{4} a_{5} b_{6} a_{7}$, $\langle1,3\rangle$ et $\langle5,7\rangle$ sont des copies.
 
 \subsection{Contexte}
 
 \subsection{Apports de l'article}
 
 \subsection{Vue d'ensemble}
+	
+\begin{enumerate}
+	\item Construire l'arbre des suffixes de $s$
+	\item À partir de l'arbre des suffixes, construire un arbre des participations
+	\item À partir de l'arbre des participations, nommer tous les \textit{fingerprints} de $s$
+\end{enumerate}
 
 \section{\textit{Participation Tree}}
 
