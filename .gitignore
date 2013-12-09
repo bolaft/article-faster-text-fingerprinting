@@ -4,3 +4,7 @@
 /slides/.sass-cache
 /auto/*
 *~
+*.aux
+*.log
+*.pdf
+*.toc
