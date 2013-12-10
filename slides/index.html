@@ -317,9 +317,9 @@
   </section>
 
   <section>
-    <h3>Du suffix tree au participation tree (3/4)</h3>
+    <h3>Algorithme de transformation ST → PT efficace</h3>
     <h4>Pour l'arête $[2, 6]$</h4>
-    <table class="table table-bordered table-centered">
+    <table class="table table-condensed table-bordered table-centered">
       <tr>
         <td>$poc_1$</td>
         <td>« $a_1t_2l_4$ »</td>
@@ -338,17 +338,50 @@
         <tr>
           <td>
             <br><small>Pour la branche :</small><br>
-            <img src="img/suffix-tree-participation.svg"></td>
+            <img src="img/suffix-tree-participation-1.svg"></td>
           <td>
             <br><small>On calcule :</small><br><br>
-            <img src="img/participation.svg">
+            <img src="img/participation-1.svg">
           </td>
         </tr>
       </table>
     </div>
   </section>
+
   <section>
-    <h3>Du suffix tree au participation tree (4/4)</h3>
+    <h3>Algorithme de transformation ST → PT efficace</h3>
+    <h4>Pour l'arête $[1, 1]$</h4>
+    <table class="table table-condensed table-bordered table-centered">
+      <tr>
+        <td>$poc_1$</td>
+        <td>« $a_1t_2l_4$ »</td>
+      </tr>
+      <tr>
+        <td>$p_1$</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>$l$ & $r$</td>
+        <td>1</td>
+      </tr>
+    </table>
+    <div>
+      <table class="table table-centered">
+        <tr>
+          <td>
+            <br><small>Pour la branche :</small><br>
+            <img src="img/suffix-tree-participation-2.svg"></td>
+          <td>
+            <br><small>On calcule :</small><br><br>
+            <img src="img/participation-2.svg">
+          </td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h3>Algorithme de transformation ST → PT efficace</h3>
     <h4>Astuces algorithmiques</h4>
     <ul>
       <li>Représentation des « chaque première occurrence »
