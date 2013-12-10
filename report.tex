@@ -21,7 +21,6 @@
 \begin{document}
 
 \maketitle
-
 \section{Introduction}
 
 \subsection{Qu'est ce qu'un \emph{fingerprint} ?}
@@ -59,9 +58,9 @@ Deux notions importantes sont à connaître avant de comprendre l'apport de l'ar
 	\item Les copies et les classes d'équivalence
 \end{itemize}
 
-\subsubsection{Localisations maximales}
-
-On note $\mathcal{C}$ un ensemble de lettres de $\Sigma$. Une location maximale de $\mathcal{C}$ dans $s$ est un intervalle $[i,j]$ tel que : \newline
+\paragraph{Localisations maximales} On note $\mathcal{C}$ un ensemble
+de lettres de $\Sigma$. Une location maximale de $\mathcal{C}$ dans
+$s$ est un intervalle $[i,j]$ tel que : \newline
 		
 \begin{itemize}
 	\item $\mathcal{C}_{s}(i,j) = \mathcal{C}$
@@ -73,9 +72,10 @@ On note $\mathcal{L}$ l'ensemble des locations maximales de tous les \textit{fin
 
 Par exemple, pour la chaîne $s = a_{1} b_{2} c_{3} a_{4} a_{5} d_{6} d_{7} b_{8}$, la seule location maximale de $abc$ est $\langle1,5\rangle$.
 
-\subsubsection{Copies et classes d'équivalence}
-
-Deux locations maximales $\langle i,j \rangle$ et $\langle k,l \rangle$ de $s$ sont des copies si $s_{i}..s_{j} = s_{k}..s_{l}$. On note $\mathcal{L}_{\mathcal{C}}$ l'ensemble des classes d'équivalence. \newline
+\paragraph{Copies et classes d'équivalence} Deux locations maximales
+$\langle i,j \rangle$ et $\langle k,l \rangle$ de $s$ sont des copies
+si $s_{i}..s_{j} = s_{k}..s_{l}$. On note $\mathcal{L}_{\mathcal{C}}$
+l'ensemble des classes d'équivalence. \newline
 
 Par exemple, pour la chaîne $s = a_{1} b_{2} a_{3} d_{4} a_{5} b_{6} a_{7}$, $\langle1,3\rangle$ et $\langle5,7\rangle$ sont des copies.
 
@@ -122,48 +122,54 @@ forme d'arbre.
 
 Exemple de construction de l'arbre pour la chaîne $ataltatlt\#$ :
 
-\subsubsection{Étape 1}
+\paragraph{Étape 1} Calcul de l'arbre des suffixes. Temps linéaire
+sur la taille du texte avec l'état de l'art~:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=80mm]{./slides/img/construction-0.png}
+\includegraphics[width=\textwidth]{./slides/img/construction-0.png}
 \caption{État initial : l'arbre des suffixes}
 \label{overflow}
 \end{figure}
 
-\subsubsection{Étape 2}
+\paragraph{Étape 2} On réduit tous les caractères à partir de la seconde occurrence du premier caractère du chemin à $\varepsilon$~:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=80mm]{./slides/img/construction-1.png}
-\caption{On réduit tous les caractères à partir de la seconde occurrence du premier caractère du chemin à $\varepsilon$}
+\includegraphics[width=\textwidth]{./slides/img/construction-1.png}
+\caption{Réduction de la chaîne après la deuxième occurrence du
+  premier caractère à $\varepsilon$}
 \label{overflow}
 \end{figure}
 
-\subsubsection{Étape 3}
+\paragraph{Étape 3} De la racine au dernier caractère avant
+$\varepsilon$, on ne garde que la première occurrence de chaque
+caractère~:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=80mm]{./slides/img/construction-2.png}
-\caption{De la racine au dernier caractère avant $\varepsilon$, on ne garde que la première occurrence de chaque caractère.}
+\includegraphics[width=\textwidth]{./slides/img/construction-2.png}
+\caption{Réduction des duplicats à $\varepsilon$}
 \label{overflow}
 \end{figure}
 
-\subsubsection{Étape 4}
+\paragraph{Étape 4} On remplace le dernier caractère de chaque chemin
+de la racine à une feuille par $\varepsilon$~:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=80mm]{./slides/img/construction-3.png}
-\caption{On remplace le dernier caractère de chaque chemin de la racine à une feuille par $\varepsilon$}
+\includegraphics[width=\textwidth]{./slides/img/construction-3.png}
+\caption{Suppression du dernier caractère}
 \label{overflow}
 \end{figure}
 
-\subsubsection{Étape 5}
+\paragraph{Étape 5} On déploie l'arbre et on supprime les branches
+vides~:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=80mm]{./slides/img/construction-45.png}
-\caption{On déploie l'arbre et on supprime les branches vides}
+\includegraphics[width=\textwidth]{./slides/img/construction-45.png}
+\caption{Nettoyage et déploiement de l'arbre}
 \label{overflow}
 \end{figure}
 
@@ -175,9 +181,9 @@ $\Phi$ étant définie comme une fonction retournant l'ensemble des localisation
 
 \subsection{Du \emph{Suffix} Tree au \emph{Participation Tree}}
 
-Les principes de l'algorithme sont les suivants : calculer les participations des branches aux fingerprints les unes après les autres, marquer les arêtes calculées pour ne pas les recalculer, et calculer seulement les deltas des valeurs nécessaires à chaque pas.
+Les principes de l'algorithme sont les suivants~: calculer les participations des branches aux fingerprints les unes après les autres, marquer les arêtes calculées pour ne pas les recalculer, et calculer seulement les deltas des valeurs nécessaires à chaque pas.
 
-\subsubsection{Algorithme efficace}
+\subsubsection*{Algorithme efficace}
 
 \textbf{Pour chaque branche}
 
@@ -189,11 +195,11 @@ $\rightarrow$ Calculer la position $p_i$ de l'occurrence suivante du premier car
 
 $\rightarrow$ Retourner la sous chaîne de $poc_i$ allant de l'indice $l$ à l'indice $r$ avec $argmin_l(l \leq x)$ et $argmax_r(r < p \land r \leq y)$. Peut valoir $\varepsilon$.
 
-\subsubsection{Astuces algorithmiques}
-
-Représentation des "chaque première occurrence" dans un arbre AVL
-Stockage des positions des caractères dans des listes pour pouvoir calculer l'itération suivante depuis l'itération courante en $\mathcal{O}(log |\Sigma|)$. \newline
-
+\subsubsection*{Astuces algorithmiques}
+\begin{itemize}
+\item Représentation des \og{}chaque première occurrence\fg{} dans un arbre AVL.
+\item Stockage des positions des caractères dans des listes pour pouvoir calculer l'itération suivante depuis l'itération courante en $\mathcal{O}(log |\Sigma|)$. \newline
+\end{itemize}
 $\rightarrow$ $\mathcal{O}(n \times log |\Sigma| + |\mathcal{L}_\mathcal{c}|)$ en temps.
 
 \section{Nommage des \emph{fingerprints}}
